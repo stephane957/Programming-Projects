@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To Do App Javascript | Stephane Toyo Demanou</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css"
+        integrity="sha512-5A8nwdMOWrSz20fDsjczgUidUBR8liPYU+WymTZP1lmY9G6Oc7HlZv156XqnsgNUzTyMefFTcsFH/tnJE/+xBg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer">
+    <link rel="stylesheet" href="style.css">
+    <script src= https://kit.fontawesome.com/a076d05399.js></script>
+</head>
+<body>
+    <div class="wrapper">
+        <header> ToDo List </header>
+        <div class="inputField">
+            <input type="text" placeholder="Add your new todo">
+            <button> <i class="fa fa-plus"> </i> </button>
+        </div>
+        <ul class= "todolist">
+            <li>
+                <span class="text"> Return my Amazon package</span>
+                <span class="icon"> <i class="fa fa-trash"></i></span>
+            </li>
+            <li>
+                <span class="text"> Create a new online CV/resume by myself</span>
+                <span class="icon"> <i class="fa fa-trash"></i></span>
+            </li>
+            <li>
+                <span class="text"> Complete my programming courses</span>
+                <span class="icon"> <i class="fa fa-trash"></i></span>
+            </li>
+        </ul>
+        <div class="footer">
+            <span class="display"> You've got 3 tasks in pending</span>
+            <button> ClearAll</button>
+        </div>
+    </div>
+    <script src="main.js"></script>
+</body>
+</html>
