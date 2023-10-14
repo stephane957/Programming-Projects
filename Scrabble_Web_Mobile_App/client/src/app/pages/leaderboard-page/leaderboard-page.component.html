@@ -1,0 +1,83 @@
+<div class = "container justified" *ngIf="leaderBoardService.scoreClassic !== undefined && leaderBoardService.scoreLOG2990 !== undefined">
+    <h6 class="MPButton" routerLink="/main-page"><mat-icon>arrow_back</mat-icon></h6>
+<h1 class = "titleLeaderboard">MEILLEURS SCORES</h1>
+    <h2 class = "scoreClassique"><div style = "margin-left: 160px">MODE CLASSIQUE</div>ㅤ
+        <div id = "boxBestClassique">
+            <mat-icon id = "icon">star
+            </mat-icon>
+            <div>
+                <table id = "tableau">
+                    <tr>
+                        <th style = "font-weight: bold; background-color:wheat; color: #196533">Scores</th>
+                        <th style = "font-weight: bold; background-color:wheat; color: #196533">Joueurs</th>
+                    </tr>
+                    <tr>
+                        <th><mat-icon>filter_1</mat-icon> {{leaderBoardService.scoreClassic[0].score}}</th>
+                        <th>{{leaderBoardService.scoreClassic[0].name}}</th>
+                    </tr>
+                    <tr>
+                        <th><mat-icon>filter_2</mat-icon> {{leaderBoardService.scoreClassic[1].score}}</th>
+                        <th>{{leaderBoardService.scoreClassic[1].name}}</th>
+                    </tr>
+                    <tr>
+                        <th><mat-icon>filter_3</mat-icon> {{leaderBoardService.scoreClassic[2].score}}</th>
+                        <th>{{leaderBoardService.scoreClassic[2].name}}</th>
+                    </tr>
+                    <tr>
+                        <th><mat-icon>filter_4</mat-icon> {{leaderBoardService.scoreClassic[3].score}}</th>
+                        <th>{{leaderBoardService.scoreClassic[3].name}}</th>
+                    </tr>
+                    <tr>
+                        <th><mat-icon>filter_5</mat-icon> {{leaderBoardService.scoreClassic[4].score}}</th>
+                        <th>{{leaderBoardService.scoreClassic[4].name}}</th>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </h2>
+    <h2 class = "scoreLOG2990"><div style = "margin-left: 175px">MODE LOG2990</div>ㅤㅤㅤㅤㅤㅤ
+        <div id = "boxBestLOG2990">
+            <mat-icon id = "icon">star
+            </mat-icon>
+            <div>
+                <table id = "tableau">
+                    <tr>
+                        <th style = "font-weight: bold; background-color:wheat; color: #196533">Scores</th>
+                        <th style = "font-weight: bold; background-color:wheat; color: #196533">Joueurs</th>
+                    </tr>
+                    <tr>
+                        <th><mat-icon>filter_1</mat-icon> {{leaderBoardService.scoreLOG2990[0].score}}</th>
+                        <th>{{leaderBoardService.scoreLOG2990[0].name}}</th>
+                    </tr>
+                    <tr>
+                        <th><mat-icon>filter_2</mat-icon> {{leaderBoardService.scoreLOG2990[1].score}}</th>
+                        <th>{{leaderBoardService.scoreLOG2990[1].name}}</th>
+                    </tr>
+                    <tr>
+                        <th><mat-icon>filter_3</mat-icon> {{leaderBoardService.scoreLOG2990[2].score}}</th>
+                        <th>{{leaderBoardService.scoreLOG2990[2].name}}</th>
+                    </tr>
+                    <tr>
+                        <th><mat-icon>filter_4</mat-icon> {{leaderBoardService.scoreLOG2990[3].score}}</th>
+                        <th>{{leaderBoardService.scoreLOG2990[3].name}}</th>
+                    </tr>
+                    <tr>
+                        <th><mat-icon>filter_5</mat-icon> {{leaderBoardService.scoreLOG2990[4].score}}</th>
+                        <th>{{leaderBoardService.scoreLOG2990[4].name}}</th>
+                    </tr>
+                </table>
+            </div>
+        </div>ㅤㅤㅤ
+    </h2>
+</div>
+
+<div class = "container justified" *ngIf='leaderBoardService.scoreClassic === undefined || leaderBoardService.scoreLOG2990 === undefined'>
+    <h6 class="MPButton" routerLink="/main-page"><mat-icon>arrow_back</mat-icon></h6>
+<h1 class = "titleLeaderboard">MEILLEURS SCORES</h1>
+    <div id = "boxError">
+        <mat-icon id = "iconError">warning</mat-icon>
+        <br>
+        <h1>Serveur/Base de Données non accessible(s)</h1> 
+    </div>
+</div>
+

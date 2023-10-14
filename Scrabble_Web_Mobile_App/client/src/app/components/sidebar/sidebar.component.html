@@ -1,0 +1,28 @@
+<div class="container">
+    <h1>CONTRÔLES</h1>
+    <div class="buttonContainer">
+        <button mat-raised-button matTooltip="Abandonner" (click)="onClickGiveUpButton()" class="optionButton">Abandonner</button>
+    </div>
+
+    <div id="sliderTiles">
+        <p>Taille de police tuiles : {{ fontSize.value }} (px).</p>
+        <mat-slider #fontSize (change)="updateSetting($event)" tickInterval="2" step="1" min="15" max="23" value="19"> </mat-slider>
+    </div>
+    <div class="buttonContainer">
+        <button mat-raised-button *ngIf="shouldConvertSoloBe()" id="convertSolo" class="optionButton" (click)="openModal()">
+            Convertir en partie Solo
+        </button>
+    </div>
+    <div class="buttonContainer">
+        <button
+            mat-raised-button
+            *ngIf="shouldConvertSoloBe()"
+            id="cancelGame"
+            class="optionButton"
+            (click)="leaveGame()"
+            routerLink="/multiplayer-init"
+        >
+            Annuler Partie
+        </button>
+    </div>
+</div>

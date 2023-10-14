@@ -1,0 +1,98 @@
+<div id="main">
+    <div id="divHandlerTurns">
+        <h2 id="playerToPlay">{{ infoClientService.displayTurn }}</h2>
+        <button mat-raised-button id="timer">
+            <app-timer></app-timer>
+        </button>
+        <button
+            mat-raised-button
+            [disabled]="socketService.socket.id !== infoClientService.game.currentPlayerId" 
+            id="passBtn" 
+            class="btnStyle"
+            (click)="skipTurnButton()"
+        >Passer
+        </button>
+    </div>
+    <div id="divPlayer" class="divPlayer">
+        <h2 class="name">{{ infoClientService.playerName }}</h2>
+        <p class="score">Score : {{ infoClientService.player.score }}</p>
+        <p class="nbLetterStand" *ngIf="!(infoClientService.player.nbLetterStand < 7)">
+            <br>
+        </p>
+        <p class="nbLetterStand" *ngIf="infoClientService.player.nbLetterStand < 7">
+            Nombre lettre(s) restant: {{ infoClientService.player.nbLetterStand }}
+        </p>
+    </div>
+    <div id="divOpponent" class="divOpponent">
+        <!-- CHANGER THE FOLLOWING LINE -->
+        <h2 class="name">{{ infoClientService.nameOpponent }}</h2>
+        <p class="score">Score : {{ infoClientService.scoreOpponent }}</p>
+        <p class="nbLetterStand" *ngIf="!(infoClientService.nbLetterStandOpponent < 7)">
+            <br>
+        </p>
+        <p class="nbLetterStand" *ngIf="infoClientService.nbLetterStandOpponent < 7">
+            Nombre lettre(s) restant: {{ infoClientService.nbLetterStandOpponent }}
+        </p>
+    </div>
+    <div id="divReserveUpdate">
+        <h3>Il reste {{ infoClientService.game.nbLetterReserve }} lettre(s) dans le reserve !</h3>
+    </div>
+    <div class="btnsContainer">
+        <button
+            mat-raised-button
+            id="exchangeBtn"
+            class="btnStyle"
+            (click)="this.onExchangeClick()"
+            [disabled]= "(infoClientService.game.currentPlayerId !== socketService.socket.id) || !this.drawingService.areLettersRightClicked(infoClientService.player.stand)"
+        >Échanger
+        </button>
+        <button
+            mat-raised-button
+            id="cancelBtn"
+            class="btnStyle"
+            (click)="this.onCancelClick()"
+            [disabled]= "(infoClientService.game.currentPlayerId !== socketService.socket.id) || !this.drawingService.areLettersRightClicked(infoClientService.player.stand)"
+        >Annuler
+        </button>
+        <button
+            mat-raised-button
+            id="playBtn"
+            class="btnStyle"
+            (click)= "this.placeGraphicService.manageKeyBoardEvent(infoClientService.game, infoClientService.player, enter)"
+            [disabled]= "(infoClientService.game.currentPlayerId !== socketService.socket.id)  || !this.placeGraphicService.isLettersDrawnSizeAboveZero()"
+        >Jouer
+         </button>
+    </div>
+    <br>
+    
+    <div id="objectives" *ngIf="infoClientService.game.isLog2990Enabled">
+        <p class="titleObjectives">Objectifs publics de partie</p>
+
+        <!-- <div class="objective containerObjectives" *ngFor="let objective of this.objectives" > -->
+        <div class="objective containerObjectives" *ngFor="let objective of this.infoClientService.game.objectivesOfGame" >
+            <p *ngIf="objective.playerId === 'public'" 
+                [ngClass]="objectiveClass(objective)">
+                <label>{{objective.objectiveName}} : {{objective.points}} points</label>
+            </p>
+        </div>
+
+        <p class="titleObjectives">Objectifs privés de partie</p>
+        <!-- <div class="objective containerObjectives" *ngFor="let objective of this.objectives" > -->
+        <div class="objective containerObjectives" *ngFor="let objective of this.infoClientService.game.objectivesOfGame" >
+            <p *ngIf="objective.playerId === socketService.socket.id" 
+                [ngClass]="objectiveClass(objective)">
+                <label>{{objective.objectiveName}} : {{objective.points}} points</label>
+            </p>
+        </div>
+
+        <!-- <div class="objective containerObjectives" *ngFor="let objective of this.objectives" > -->
+        <div class="objective containerObjectives" *ngFor="let objective of this.infoClientService.game.objectivesOfGame" >
+            <div *ngIf="objective.playerId !== socketService.socket.id && objective.playerId !== 'public' && objective.objectiveStatus === 'completed'">
+                <p class="titleObjectives">Votre adversaire a complété : </p>
+                <p class="objective completed">
+                    <label>{{objective.objectiveName}} : {{objective.points}} points</label>
+                </p>
+            </div>
+        </div>
+    </div>
+</div>

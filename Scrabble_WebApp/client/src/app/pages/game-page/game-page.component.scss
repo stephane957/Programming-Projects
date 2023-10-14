@@ -1,0 +1,36 @@
+.container {
+    height: 100%;
+    display: flex;
+    // float: right;
+    justify-content: center;
+}
+
+.play-area-container {
+    overflow: auto;
+    flex: 1 1 auto;
+}
+.playersInfo {
+    top: 50%;
+}
+.play-area {
+    display: grid;
+    width: min-content;
+    outline: none;
+    float: left;
+}
+
+body {
+    background-color: #0c483f;
+}
+
+#playersInfo{
+    margin-top: 50px;
+    margin-right: 50px;
+    margin-bottom: 0px;
+}
+
+#communicationBox{
+    margin-top: 50px;
+    margin-right: 50px;
+    margin-bottom: 0px;
+}

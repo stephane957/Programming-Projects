@@ -1,0 +1,51 @@
+{
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "editor.formatOnSave": true,
+  "editor.codeActionsOnSave": {
+    "source.organizeImports": true,
+    "source.fixAll.eslint": true
+  },
+  "html.format.indentInnerHtml": true,
+  "typescript.format.insertSpaceAfterOpeningAndBeforeClosingEmptyBraces": false,
+  "eslint.workingDirectories": [
+    "./client",
+    "./server"
+  ],
+  "eslint.probe": [
+    "javascript",
+    "typescript",
+    "html",
+    "vue",
+    "markdown"
+  ],
+  "eslint.validate": [
+    "javascript",
+    "typescript",
+    "html",
+    "vue",
+    "markdown"
+  ],
+  "cSpell.words": [
+    "boite",
+    "commande"
+  ],
+  "[typescript]": {
+    "editor.defaultFormatter": "vscode.typescript-language-features"
+  },
+  "cmake.configureOnOpen": false,
+  "angular.enable-strict-mode-prompt": false,
+  "cSpell.language": "en,fr-FR",
+  "C_Cpp_Runner.warnings": [
+    "-Wall",
+    "-Wextra",
+    "-Wpedantic"
+  ],
+  "C_Cpp_Runner.compilerArgs": [],
+  "C_Cpp_Runner.includePaths": [],
+  "C_Cpp_Runner.linkerArgs": [],
+  "C_Cpp_Runner.cStandard": "",
+  "C_Cpp_Runner.cppStandard": "",
+  "C_Cpp_Runner.excludeSearch": [],
+  "C_Cpp_Runner.enableWarnings": true,
+  "C_Cpp_Runner.warningsAsError": false
+}

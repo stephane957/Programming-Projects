@@ -1,0 +1,69 @@
+<body>
+  <div class="bg-image"></div>
+  <div id="container" class="center">
+    <div id="container-content">
+      <div class="container-1">
+        <div class="box-1">
+          <mat-icon>person</mat-icon>
+          <p>{{ this.infoClientService.playerName }} (Vous)</p>
+        </div>
+        <div class="box-3">
+          <button class="createButton" mat-button routerLink="/param-select">Créer Partie</button>
+        </div>
+        <div *ngIf="this.infoClientService.rooms.length === 0; else show"></div>
+        <ng-template #show>
+          <div class="box-3" *ngIf="this.infoClientService.rooms.length >= 2; else disabled">
+            <button class="createButton" mat-button (click)="onClickRandom()">Aléatoire</button>
+          </div>
+          <ng-template #disabled>
+            <div class="box-3" #disabled>
+              <button class="createButton" mat-button (click)="onClickRandom()" disabled=true>Aléatoire</button>
+            </div>
+          </ng-template>
+        </ng-template>
+      </div>
+      <h6 class="MPButton" routerLink="/main-page">
+        <mat-icon>arrow_back</mat-icon>
+      </h6>
+
+      <h1 id="roomListTitle">LISTE DES SALLES DE JEUX</h1>
+      <div class="roomList" *ngIf="!this.infoClientService.isLog2990Enabled">
+        <table id="tableRoom">
+          <thead>
+            <tr>
+              <th>Nom salle</th>
+              <th>Temps par tour</th>
+              <th>Bonus Random</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let room of infoClientService.rooms" (click)="this.onClickGame(room.name)">
+              <td *ngIf="!room.isLog2990Enabled">{{room.name}}</td>
+              <td *ngIf="!room.isLog2990Enabled">{{room.timeTurn}} min</td>
+              <td *ngIf="!room.isLog2990Enabled">{{room.isBonusRandom ? "Activé" : "Désactivé"}}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="roomList" *ngIf="this.infoClientService.isLog2990Enabled">
+        <table id="tableRoom">
+          <thead>
+            <tr>
+              <th>Nom salle</th>
+              <th>Temps par tour</th>
+              <th>Bonus Random</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let room of infoClientService.rooms" (click)="this.onClickGame(room.name)">
+              <td *ngIf="room.isLog2990Enabled">{{room.name}}</td>
+              <td *ngIf="room.isLog2990Enabled">{{room.timeTurn}} min</td>
+              <td *ngIf="room.isLog2990Enabled">{{room.isBonusRandom ? "Activé" : "Désactivé"}}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</body>
