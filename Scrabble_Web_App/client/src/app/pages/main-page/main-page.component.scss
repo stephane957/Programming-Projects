@@ -1,0 +1,162 @@
+.container {
+    min-height: 100vh;
+    height: auto;
+    background-image: url('https://www.printablee.com/postpic/2011/03/blank-scrabble-board-template-printable_326282.jpg');
+    background-position: center;
+    background-attachment: fixed;
+}
+
+.justified {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+}
+#LOG2990ModeButton:disabled,
+#classicModeButton:disabled {
+    opacity: 100%;
+    cursor: not-allowed;
+}
+
+.button {
+    margin-top: 20px;
+    text-align: center;
+    font-size: 40px;
+    padding: 20px;
+    border-radius: 8px;
+    background-color: #0c483f;
+    color: wheat;
+}
+
+#classicModeButton,
+#LOG2990ModeButton {
+    color: wheat;
+}
+
+.team-name {
+    margin-top: 0.25em;
+    margin-bottom: 0.25em;
+    font-size: 25px;
+    color: #0c483f;
+}
+
+.header-item {
+    justify-content: center;
+    text-align: center;
+    transform: scale(1.5);
+    margin-top: 10px;
+    color: #0c483f;
+}
+
+.footer-item {
+    text-align: center;
+    color: #0c483f;
+    font-size: 20px;
+}
+
+.server-message {
+    justify-content: center;
+    width: 20%;
+    min-width: min-content;
+}
+
+.ExpansionPanelHidden {
+    margin-top: 20px !important;
+    box-shadow: none;
+    display: none;
+}
+
+.ExpansionPanel {
+    margin-top: 40px !important;
+    box-shadow: none;
+    background: none;
+}
+
+.leftBtn {
+    margin-right: 100px;
+    color: #0c483f;
+    background-color: wheat;
+    border-color: #0c483f;
+}
+
+.rightBtn {
+    color: #0c483f;
+    background-color: wheat;
+    border-color: #0c483f;
+}
+
+.leftBtn:hover {
+    background-color: #0c483f;
+}
+
+.rightBtn:hover {
+    background-color: #0c483f;
+}
+
+.leftBtn:hover .mat-icon {
+    color: white;
+}
+
+.rightBtn:hover .mat-icon {
+    color: white;
+}
+
+::ng-deep .transparentTooltip {
+    background: #0c483f !important;
+    color: white !important;
+    font-size: 14px !important;
+}
+
+#form {
+    text-align: center;
+}
+.buttonName {
+    border-radius: 8px;
+    background-color: wheat;
+    color: white;
+    border: solid;
+}
+.alert-danger {
+    color: red;
+    margin-top: 15px;
+    transform: scale(1.1);
+    margin-left: 15px;
+    padding-left: 12px;
+    font-weight: bold;
+    position: relative;
+}
+.form-group {
+    width: 300px;
+    left: 7%;
+    border-radius: 8px;
+    top: 30%;
+    padding: 12px;
+    padding-left: 0px;
+    background-color: #0c483f;
+    position: relative;
+    display: inline-block;
+    align-items: center;
+}
+input {
+    border-color: wheat;
+    border-radius: 5px;
+    height: 30px;
+    margin-left: 12px;
+    background-color: wheat;
+    color: #0c483f;
+}
+
+::-webkit-input-placeholder {
+    color: #0c483f;
+}
+
+.buttonName {
+    position: relative;
+    left: 2%;
+    width: 100px;
+    bottom: 2%;
+    border-radius: 10px;
+    background-color: wheat;
+    color: #0c483f;
+    height: 42px;
+}

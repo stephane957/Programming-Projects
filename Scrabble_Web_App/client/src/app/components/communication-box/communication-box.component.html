@@ -1,0 +1,21 @@
+<div id="commBox" (click)="onLeftClickComBox()">
+    <div class="wrapper">
+        <div class="sidebar" #scrollFrame>
+            <div *ngFor="let msg of infoClientService.player.chatHistory" #commands>
+                <p class="messagePlayer" *ngIf="msg.sender === 'P'">{{ msg.message }}</p>
+                <p class="messageSystem" *ngIf="msg.sender === 'S'">{{ msg.message }}</p>
+                <p class="messageOpponent" *ngIf="msg.sender === 'O'">{{ msg.message }}</p>
+            </div>
+        </div>
+    </div>
+    <div class="Input">
+        <input
+            id="inputCommBox"
+            class="inputField"
+            type="text"
+            placeholder="Ecrivez une commande avec ! ou un message"
+            [(ngModel)]="inputInComBox"
+            (keydown.enter)="onEnterComBox(inputInComBox)"
+        />
+    </div>
+</div>

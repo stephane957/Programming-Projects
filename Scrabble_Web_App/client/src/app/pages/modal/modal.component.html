@@ -1,0 +1,27 @@
+<div id="container" *ngIf="this.infoClientService.nameVP1dictionary0 === 1">
+    <div class="modalTitle">
+        <h1>Ajouter un nom VP</h1>
+    </div>
+    <form class="editForm" #form="ngForm">
+        <label for="text">Prénom</label>
+        <input id="firstInput" type="text" #first="ngModel" ngModel  [ngModelOptions]="{standalone: true}">
+        <label for="text">Nom</label>
+        <input id="secondInput" type="text" #second="ngModel" ngModel [ngModelOptions]="{standalone: true}">
+        <button id="submitForm" mat-button [disabled]="!form.valid" (click)="closeModalVP()">Valider</button>
+    </form>
+</div>
+
+<div id="container" *ngIf="this.infoClientService.nameVP1dictionary0 === 0">
+    <div class="modalTitle">
+        <h1>Modifier un dictionaire</h1>
+    </div>
+    <form class="editForm" #form="ngForm">
+        <label for="text">Titre</label>
+        <input id="firstInput" type="text" #first="ngModel" ngModel [ngModelOptions]="{standalone: true}">
+        <label for="text">Description</label>
+        <input id="secondInput" type="text" #second="ngModel" ngModel [ngModelOptions]="{standalone: true}">
+        <div class="rules"><span> Aucuns caractères spéciaux exceptés ç, é, è, ê. Auncun chiffres non plus.
+        </span></div>
+        <button id="submitForm" mat-button [disabled]="!form.valid" (click)="closeModalDict()">Valider</button>
+    </form>
+</div>

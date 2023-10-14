@@ -1,0 +1,90 @@
+<div class="container justified">
+    <h1 class="header-item">Bienvenue au projet Scrabble de la meilleure équipe : 305</h1>
+    <img src="https://i.imgur.com/nyRorRT.png" height="400" alt="Logo Scrabble" />
+    <section id="server-message">
+        <form #form="ngForm">
+            <pre></pre>
+                <div class="form-group">
+                    <input
+                        placeholder="Entrez votre nom"
+                        #name="ngModel"
+                        required
+                        minlength="4"
+                        maxlength="20"
+                        type="text"
+                        name="Playername"
+                        pattern="^[a-zA-Z0-9]+$"
+                        ngModel
+                    />
+                    <button class="buttonName" [disabled]="!form.valid" (click)="onSubmit()">
+                        <span> {{ submitted ? 'Enregistré' : 'Enregistrer' }} </span>
+                    </button>
+                    <br>
+                    <br>
+                    <div *ngIf="name.touched && name.invalid" class="alert-danger">
+                        <p *ngIf="name.errors!.required">Vous ne pouvez pas laisser la case vide!</p>
+                        <p *ngIf="name.errors!.minlength">Le nom est trop court (minimum 4 characteres)!</p>
+                        <p *ngIf="name.errors!.pattern">Le nom comporte des charactères spéciaux ! (lettres et chiffres
+                            uniquement)</p>
+                    </div>
+                </div>
+            <pre></pre>
+        </form>
+        <div class="justified">
+            <!-- rajouter  routerLink="/game" link apres -->
+            <div (mousedown)="noNameError()">
+                <button mat-flat-button id="classicModeButton" class="button" [disabled]="!submitted"
+                    (click)="toggleClassic()">
+                    Scrabble classique
+                </button>
+            </div>
+            <mat-accordion>
+                <mat-expansion-panel class="{{ expansionPanelStyleClassic }}" #expansionClassic>
+                    <div>
+                        <button mat-fab color="white" class="leftBtn" matTooltipClass="transparentTooltip"
+                            matTooltip="Solo" matTooltipPosition="above" routerLink="/param-select"
+                            (click)="onClickSolo('classic')">
+                            <mat-icon>person</mat-icon>
+                        </button>
+                        <button mat-fab class="rightBtn" color="white" matTooltip="multijoueur"
+                            matTooltipClass="transparentTooltip" matTooltipPosition="above"
+                            routerLink="/multiplayer-init" (click)="onClickMulti('classic')">
+                            <mat-icon>people</mat-icon>
+                        </button>
+                    </div>
+                </mat-expansion-panel>
+            </mat-accordion>
+            <div (mousedown)="noNameError()">
+                <button mat-flat-button id="LOG2990ModeButton" class="button" [disabled]="!submitted"
+                    (click)="toggleLOG2990()">
+                    Scrabble LOG2990
+                </button>
+            </div>
+            <mat-accordion>
+                <mat-expansion-panel class="{{ expansionPanelStyleLOG2990 }}" #expansionLOG2990>
+                    <div>
+                        <button mat-fab color="white" class="leftBtn" matTooltipClass="transparentTooltip"
+                            matTooltip="Solo" matTooltipPosition="above" routerLink="/param-select"
+                            (click)="onClickSolo('log2990')">
+                            <mat-icon>person</mat-icon>
+                        </button>
+                        <button mat-fab class="rightBtn" color="white" matTooltip="multijoueur"
+                            matTooltipClass="transparentTooltip" matTooltipPosition="above"
+                            routerLink="/multiplayer-init" (click)="onClickMulti('log2990')">
+                            <mat-icon>people</mat-icon>
+                        </button>
+                    </div>
+                </mat-expansion-panel>
+            </mat-accordion>
+            <button mat-flat-button class="button" routerLink="/leaderboard">Meilleurs scores</button>
+        </div>
+    </section>
+    <div class="footer-item">
+        <h4 class="team-name">Équipe Poly 305</h4>
+        <p>
+            <span>Adam Burhan </span>, <span>Aghiles Gasselin </span>, <span>Rayan Zerhouni </span>, <span>Amir
+                Cherkaoui </span>,
+            <span>Stephane Toyo Demanou </span>, <span>Marc-Antoine Baillargeon</span>
+        </p>
+    </div>
+</div>

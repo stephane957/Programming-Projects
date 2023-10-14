@@ -1,0 +1,180 @@
+body,
+html {
+    height: 100%;
+}
+
+.bg-image {
+    background-image: url('https://www.printablee.com/postpic/2011/03/blank-scrabble-board-template-printable_326282.jpg');
+    background-size: 100%;
+    filter: blur(5px);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 100%;
+}
+
+#container {
+    position: absolute;
+    width: 60%;
+    height: 70%;
+    bottom: 15%;
+    left: 20%;
+    background-color: white;
+    z-index: 2;
+    background: #0c483f;
+    color: wheat;
+    font-size: large;
+    border-radius: 25px;
+    justify-content: center;
+}
+
+.container-1 {
+    display: flex;
+}
+
+.container-1 div,
+.container-2 div {
+    padding: 10px;
+}
+
+.container-1-box {
+    margin-top: 50px;
+    height: 80%;
+    text-align: center;
+}
+
+.box-1 {
+    order: 1;
+    flex: 1;
+    text-align: center;
+    margin-top: 20px;
+}
+
+.box-3 {
+    flex: 1;
+    order: 3;
+    text-align: center;
+    margin-top: 20px;
+}
+
+.startButton {
+    top: 50%;
+    position: relative;
+    text-align: center;
+    height: 10%;
+    width: 20%;
+    border-radius: 15px;
+    background-color: wheat;
+}
+
+.createButton {
+    height: 50px;
+    width: 120px;
+    top: 10px;
+    border-radius: 5px;
+    background-color: wheat;
+    color: #0c483f;
+}
+
+// Les boutons ne répondent pas, aucun idée pourquoi
+
+.game .button-players {
+    position: absolute;
+    left: 80%;
+    top: 15%;
+    display: inline;
+    height: 75%;
+}
+
+.gamesgrid {
+    top: 100px;
+    width: 100%;
+    margin: 0;
+    display: grid;
+    grid-gap: 1rem;
+}
+
+.game {
+    position: relative;
+    background-color: wheat;
+    color: black;
+    border: solid 1px red;
+    font-size: large;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    padding: 1rem;
+    height: 5px;
+}
+
+.roomList {
+    border: solid 3px;
+    color: wheat;
+    height: 40%;
+    width: 50%;
+    border-radius: 3px;
+    margin-left: 5%;
+    margin-top: 1%;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    overflow-y: auto;
+    overflow-x: auto;
+}
+
+//center the roomListTitle
+#roomListTitle {
+    text-align: center;
+    margin-top: 2%;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+::-webkit-scrollbar {
+    width: 8px;
+    // Height of horizontal scroll bar
+    height: 10px;
+}
+::-webkit-scrollbar-track {
+    background: #0c483f;
+}
+::-webkit-scrollbar-thumb {
+    background: wheat;
+    border-radius: 8px;
+}
+
+
+.MPButton {
+    cursor: pointer;
+    top: 10px;
+    left: 10px;
+    position: absolute;
+    transform: scale(1.5);
+    margin-top: 2%;
+    margin-left : 2%;
+    color: wheat;
+}
+
+#tableRoom {
+    font-family: Arial, Helvetica, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+}
+
+#tableRoom td, #tableRoom th {
+    padding: 8px;
+}
+
+#tableRoom tr:hover {
+    background-color: wheat;
+    color: #0C483F;
+}
+
+#tableRoom th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: left;
+    background-color: wheat;
+    color: #0C483F;
+}
+
+#tableRoom td{
+    border-bottom: 2px solid wheat;
+}

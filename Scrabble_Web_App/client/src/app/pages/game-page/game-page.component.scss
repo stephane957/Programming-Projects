@@ -1,0 +1,47 @@
+.container {
+    height: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.play-area-container {
+    overflow: auto;
+    flex: 1 1 auto;
+}
+.playersInfo {
+    top: 50%;
+}
+.play-area {
+    display: grid;
+    width: min-content;
+    outline: none;
+    float: left;
+}
+
+body {
+    background-color: #0c483f;
+}
+
+#playersInfoNoLog{
+    margin-top: 13%;
+    margin-right: 6%;
+    margin-bottom: 0px;
+}
+
+#communicationBoxNoLog{
+    margin-top: 5%;
+    margin-right: 50px;
+    margin-bottom: 0px;
+}
+
+#playersInfoLog{
+    margin-top: 5%;
+    margin-right: 6%;
+    margin-bottom: 0px;
+}
+
+#communicationBoxLog{
+    margin-top: 5%;
+    margin-right: 6%;
+    margin-bottom: 0px;
+}

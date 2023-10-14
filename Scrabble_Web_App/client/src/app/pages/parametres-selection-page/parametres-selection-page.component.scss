@@ -1,0 +1,256 @@
+label {
+    text-align: left;
+}
+
+.display {
+    text-align: center;
+}
+
+.alert-danger {
+    color: red;
+    font-weight: bold;
+}
+form {
+    text-align: center;
+}
+
+input {
+    font-size: large;
+    height: 30px;
+    border-radius: 8px;
+    border-color: #0c483f;
+    background-color: wheat;
+}
+
+#container {
+    position: absolute;
+    width: 70%;
+    height: 80%;
+    background-color: white;
+    z-index: 2;
+    background: #0c483f;
+    color: wheat;
+    font-size: large;
+    border-radius: 25px;
+}
+
+.center {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+
+    transform: translate(-50%, -50%);
+}
+
+.container-1 {
+    display: flex;
+}
+
+.container-1 div,
+.container-3 div,
+.container-2 div {
+    padding: 10px;
+}
+
+
+#levelVirtualPlayer{
+    margin-top: -50px;
+}
+
+.box-1 {
+    order: 1;
+    flex: 1;
+    text-align: center;
+    margin-top: 20px;
+}
+.box-2 {
+    order: 2;
+    flex: 1;
+    width: 2%;
+    text-align: center;
+    margin-top: 20px;
+}
+.box-3 {
+    flex: 1;
+    order: 3;
+    text-align: center;
+    margin-top: 20px;
+}
+.container-2-box {
+    margin-top: 50px;
+    height: 80%;
+    text-align: center;
+}
+
+.container-3-box {
+    margin-top: 50px;
+    height: 80%;
+    text-align: center;
+}
+
+.bg-image {
+    background-image: url('https://www.printablee.com/postpic/2011/03/blank-scrabble-board-template-printable_326282.jpg');
+    background-size: 100%;
+    filter: blur(5px);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 100%;
+}
+
+body,
+html {
+    height: 100%;
+}
+
+.startbutton {
+    left: 38%;
+    position: relative;
+    text-align: center;
+    height: 12%;
+    width: 25%;
+    border-radius: 13px;
+    background-color: wheat;
+    margin-top: 0%;
+    color: #0c483f;
+    font-size: 16px;
+    font-weight: bold;
+    bottom: 0%;
+    cursor:pointer;
+}
+
+#startButtonMulti:disabled{
+    cursor: not-allowed;
+    opacity: 50%;
+}
+
+.bonusOption {
+    position: fixed;
+    left: 39%;
+    top: 45%;
+
+}
+
+#bonusButtonSolo {
+    border-radius: 8px;
+    background-color: wheat;
+    height: 30px;
+    width: 100px;
+    margin-left: 30px;
+    position: absolute;
+}
+
+#bonusButtonMulti{
+    border-radius: 8px;
+    background-color: wheat;
+    height: 30px;
+    width: 100px;
+}
+
+.spanBonus {
+    text-align: center;
+    position: relative;
+    margin-top: -5%;
+    margin-bottom: 3%;
+}
+
+#randomBonusP{
+    margin-left: -10%;
+    margin-top: -20%;
+}
+
+.multiplayerOptionsSolo {
+    background-color: wheat;
+    height: 66px;
+    border-radius: 10px;
+    position: relative;
+    bottom: 80px;
+    margin: 0%;
+    margin-bottom: 20px;
+}
+
+.multiplayerOptionsMulti{
+    background-color: wheat;
+    height: 66px;
+    border-radius: 10px;
+    position: relative;
+    bottom: 30px;
+    margin: 0%;
+    margin-bottom: 20px;
+}
+
+.roomName {
+    text-align: center;
+    margin-bottom: 5px;
+}
+
+#roomNameInputContainer{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+#instructionRoomName{
+    font-size: 10px;
+}
+
+#dictOptions {
+    width: 30%;
+    bottom: 100px;
+}
+
+#dictOptionsMulti{
+    margin-top: -2%;
+    margin-bottom: 5%;
+    width: 30%;
+}
+
+mat-option {
+    background-color: wheat !important;
+    margin: 0px;
+}
+.timeSelection {
+    background-color: wheat;
+    margin: 0px;
+}
+
+.dictionarySelection {
+    background-color: wheat;
+    margin: 0px;
+}
+
+#dictionnaryDescriptionSolo {
+    margin-top: -7%;
+    color: wheat;
+    position: relative;
+    border-radius: 5px;
+}
+
+#dictionnaryDescriptionMulti{
+    margin-top: -7%;
+    color: wheat;
+    position: relative;
+    border-radius: 5px;
+}
+
+mat-form-field {
+    margin-top: 60px;
+}
+
+mat-option {
+    color: #0c483f;
+}
+
+//place the button on the top left corner
+//give the button the same configuration as the Demarrer button
+.MPButton {
+    cursor: pointer;
+    top: 10px;
+    left: 10px;
+    position: absolute;
+    transform: scale(1.5);
+    margin-top: 2%;
+    margin-left : 2%;
+    color: wheat;
+}

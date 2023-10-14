@@ -1,0 +1,127 @@
+<body>
+    <div class="bg-image"></div>
+    <div id="container" class="center" *ngIf="infoClientService.gameMode === 'Solo'">
+        <div id="container-content">
+            <div class="container-1">
+                <div class="box-1">
+                    <mat-icon>person</mat-icon>
+                    <p>{{ this.infoClientService.playerName }} (Vous)</p>
+                </div>
+                <div class="box-2">
+                    <p>VS</p>
+                </div>
+                <div class="box-3">
+                    <mat-icon>person</mat-icon>
+                    <p>Adversaire (Virtuel)</p>
+                </div>
+            </div>
+
+            <div class="container-2">
+                <div class="container-2-box">
+                    <h6 class="MPButton" routerLink="/main-page">
+                        <mat-icon>arrow_back</mat-icon>
+                    </h6>
+                    <mat-form-field appearance="fill" class="multiplayerOptionsSolo">
+                        <mat-label>Niveau du JV :</mat-label>
+                        <mat-select [(value)]="infoClientService.vpLevel">
+                            <mat-option *ngFor="let level of vpLevels" [value]="level">
+                                <h2 class="vpLevelSelection" (click)="vpLevelSelection(level)">{{ level }}</h2>
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                    <br />
+                    <mat-form-field appearance="fill" class="multiplayerOptionsSolo">
+                        <mat-label>Temps par tour :</mat-label>
+                        <mat-select [(value)]="infoClientService.minutesByTurn">
+                            <mat-option *ngFor="let interval of timeIntervals" [value]="interval.value">
+                                <h2 class="timeSelection" (click)="onClickTime(interval.viewValue)">{{ interval.viewValue }}</h2>
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                    <div class="spanBonus">
+                        <p>
+                            <b id="randomBonusP">Bonus aléatoires : </b>
+                            <button id="bonusButtonSolo" (click)="randomizeBonuses()">
+                                <span> {{ infoClientService.randomBonusesOn ? 'Activé' : 'Désactivé' }} </span>
+                            </button>
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="container-3">
+                <div class="container-3-box">
+                    <mat-form-field appearance="fill" id="dictOptions" class="multiplayerOptionsSolo">
+                        <mat-label>Dictionaire utilisé:</mat-label>
+                        <mat-select [(value)]="mockDictionary.title">
+                            <mat-option *ngFor="let dict of infoClientService.dictionaries" [value]="dict.title">
+                                <h2 class="dictionnarySelection" (click)="onClickDict(dict)">{{ dict.title }}</h2>
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                    <div id="dictionnaryDescriptionSolo">
+                        Description du dictionaire
+                        <h2>{{ this.mockDictionary.description }}</h2>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <button class="startbutton" (click)="createRoom()">Demarrer</button>
+    </div>
+    <div id="container" class="center" *ngIf="infoClientService.gameMode === 'Multi'">
+        <div id="container-content">
+            <div class="container-1">
+                <div class="box-1">
+                    <mat-icon>person</mat-icon>
+                    <p>{{ this.infoClientService.playerName }} (Vous)</p>
+                </div>
+            </div>
+
+            <p class="roomName">Nom de la salle:</p>
+            <div id="roomNameInputContainer">
+                <input id="roomName" #name="ngModel" required minlength="4" maxlength="19" type="text" pattern="^[a-zA-Z0-9]+$" ngModel />
+            </div>
+            <p id="instructionRoomName" class="roomName">Min 4 lettres, pas de charactere special.</p>
+
+            <div class="container-2">
+                <div class="container-2-box">
+                    <h6 class="MPButton" routerLink="/main-page">
+                        <mat-icon>arrow_back</mat-icon>
+                    </h6>
+                    <mat-form-field appearance="fill" class="multiplayerOptionsMulti">
+                        <mat-label>Temps par tour :</mat-label>
+                        <mat-select [(value)]="infoClientService.minutesByTurn">
+                            <mat-option *ngFor="let interval of timeIntervals" [value]="interval.value">
+                                <a (click)="onClickTime(interval.viewValue)"> {{ interval.viewValue }} </a>
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                    <span class="spanBonus">
+                        <p>
+                            <b>Bonus aléatoires : </b>
+                            <button id="bonusButtonMulti" (click)="randomizeBonuses()">
+                                <span> {{ infoClientService.randomBonusesOn ? 'Activé' : 'Désactivé' }} </span>
+                            </button>
+                        </p>
+                    </span>
+                </div>
+            </div>
+            <div class="container-3">
+                <div class="container-3-box">
+                    <mat-form-field appearance="fill" id="dictOptionsMulti" class="multiplayerOptionsMulti">
+                        <mat-label>Dictionnaire utilisé :</mat-label>
+                        <mat-select [(value)]="mockDictionary.title">
+                            <mat-option *ngFor="let dict of infoClientService.dictionaries" [value]="dict.title">
+                                <h2 class="dictionnarySelection" (click)="onClickDict(dict)">{{ dict.title }}</h2>
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                    <div id="dictionnaryDescriptionMulti">
+                        Description du dictionaire
+                        <h2>{{ this.mockDictionary.description }}</h2>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <button id="startButtonMulti" class="startbutton" (click)="createRoom()" [disabled]="name.invalid">Demarrer</button>
+    </div>
+</body>

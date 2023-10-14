@@ -1,0 +1,26 @@
+<body (click)="onLeftClickGamePage()">
+    <div class="container">
+        <app-sidebar></app-sidebar>
+        <section class="play-area-container">
+            <app-play-area class="play-area" tabindex="0"></app-play-area>
+        </section>
+        <div *ngIf="!infoClientService.game.isLog2990Enabled">
+            <div id="playersInfoNoLog">
+                <app-info-panel></app-info-panel>
+            </div>
+            <div id="communicationBoxNoLog">
+                <app-communication-box></app-communication-box>
+            </div>   
+            
+        </div>
+
+        <div *ngIf="infoClientService.game.isLog2990Enabled">
+            <div id="playersInfoLog">
+                <app-info-panel></app-info-panel>
+            </div>
+            <div id="communicationBoxLog">
+                <app-communication-box></app-communication-box>
+            </div>   
+        </div>
+    </div>
+</body>

@@ -1,0 +1,202 @@
+#main {
+    border: 10px solid #0C483F;
+    background-color: wheat;
+}
+
+/////////////////////////////////////////////////////////
+// PARTIE GESTION DU TEMPS ET DES TOURS
+/////////////////////////////////////////////////////////
+#divHandlerTurns {
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.btnsContainer{
+    margin-top: -6%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#timer {
+    background-color: wheat;
+    margin: auto;
+    margin-left: 12%;
+    border-radius: 10px;
+    margin-top: 0px;
+    border-radius: 4px;
+    cursor: default;
+    box-shadow: none;
+}
+
+#playerToPlay {
+    color: #0C483F;
+    text-align: center;
+}
+
+.btnStyle{
+    background-color: #0C483F;
+    display: inline;
+    margin-top: 0px;
+    font-size: 18px;
+    color: wheat;
+    cursor: pointer;
+    box-shadow: none;
+}
+
+#passBtn {
+    margin-left: 10px;
+}
+
+#exchangeBtn:disabled {
+    cursor: default;
+    background-color: grey;
+}
+#cancelBtn {
+    margin-left: 20px;
+}
+
+#cancelBtn:disabled {
+    cursor: default;
+    background-color: grey;
+}
+#passBtn:disabled {
+    cursor: default;
+    background-color: grey;
+}
+#playBtn {
+    margin-left: 20px;
+}
+#playBtn:disabled {
+    cursor: default;
+    background-color: grey;
+}
+
+// .mat-raised-button:not([class*=mat-elevation-z]) {
+//     /* box-shadow: 0px 3px 1px -2px rgb(0 0 0 / 20%), 0px 2px 2px 0px rgb(0 0 0 / 14%), 0px 1px 5px 0px rgb(0 0 0 / 12%); */
+// }
+/////////////////////////////////////////////////////////
+// PARTIE COMMUNE JOUEUR ET ADVERSAIRE
+/////////////////////////////////////////////////////////
+
+.divPlayer {
+    border: 3px solid #0C483F;
+    border-left-color:wheat;
+}
+
+.divOpponent {
+    border: 3px solid #0C483F;
+    border-right-color: wheat;
+}
+
+.name {
+    color: #0C483F;
+    text-align: center;
+    margin-bottom: 0px;
+}
+
+.score {
+    color: #0C483F;
+    text-align: center;
+    margin-bottom: 0px;
+    // display: inline;
+}
+
+.nbLetterStand {
+    color: #0C483F;
+    text-align: center;
+    top: 20px;
+    // display: inline;
+}
+
+/////////////////////////////////////////////////////////
+// PARTIE POUR JOUEUR
+/////////////////////////////////////////////////////////
+
+#divPlayer {
+    color: wheat;
+    width: 50%;
+    float: left;
+}
+
+/////////////////////////////////////////////////////////
+// PARTIE POUR RESERVE
+/////////////////////////////////////////////////////////
+
+#divReserveUpdate {
+    color: wheat;
+    text-align: center;
+    margin-top: 5px;
+    margin-bottom: -10px;
+}
+
+#divReserveUpdate h3{
+    font-size: 18px;
+}
+
+/////////////////////////////////////////////////////////
+// PARTIE POUR OBJECTIFS
+/////////////////////////////////////////////////////////
+#objectives{
+    // border-top:  solid wheat;
+    color: wheat;
+    // padding: 10px;
+}
+
+.titleObjectives{
+    color: #0C483F;
+    text-decoration: underline;
+    text-align: center;
+    font-size: 20px;
+    margin-top: 20px;
+}
+
+.example-margin {
+    margin: 0 12px;
+}
+
+.completedOrFailed{
+    text-decoration: line-through;
+    font-style: italic;
+}
+
+.typeObjective{
+    text-align: center;
+    font-size: 20px;
+}
+
+
+.objective{
+    border-radius: 5px;
+    text-align: center;
+    padding: 5px;
+    padding-right: 10px;
+    padding-left: 10px;
+}
+
+.completed{
+    background-color: green;
+    text-decoration: line-through;
+    font-style: italic;
+}
+
+.uncompleted{
+    color: #0C483F;
+    // background-color: #0C483F;
+    text-decoration: none;
+    font-style: normal;
+}
+
+.failed{
+    background-color: red;
+    text-decoration: line-through;
+    font-style: italic;
+}
+
+.containerObjectives{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-block-start: -10px;
+    font-size: 15px;
+}
