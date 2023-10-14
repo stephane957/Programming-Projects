@@ -1,0 +1,52 @@
+.gridContainer {
+    display: grid;
+    grid-template-columns: auto 700px;
+}
+
+.gridContainerInGame {
+    display: grid;
+    grid-template-columns: auto 620px;
+}
+
+.backgroundImage {
+    background-image: url('../../../assets/scrabble-background.jpg');
+    background-position: center;
+    background-attachment: fixed;
+}
+
+.material-symbols-outlined {
+    top: 3%;
+    right: 1%;
+    position: absolute;
+    font-size: 40px;
+    cursor: pointer;
+    user-select: none;
+    border-radius: 40px;
+    padding: 10px;
+}
+
+.grid-item {
+    text-align: center;
+    min-height: 100vh;
+}
+
+#playersInfoNoLog{
+    margin-top: 2%;
+    margin-bottom: 0px;
+}
+
+#communicationBoxNoLog{
+    margin-top: 5%;
+    bottom: 0vh;
+}
+
+.MPButton {
+    cursor: pointer;
+    top: 10px;
+    left: 10px;
+    position: absolute;
+    transform: scale(2);
+    margin-top: 2%;
+    margin-left: 2%;
+    
+}

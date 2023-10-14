@@ -1,0 +1,141 @@
+<div id="container" class="justified">
+    <div id="container-content">
+        <div class="container-1">
+            <div class="box-1">
+                <mat-icon>person</mat-icon>
+                <p>{{ this.infoClientService.playerName }}{{'PARAMETERS_SELECTION.YOU' | translate}}</p>
+            </div>
+        </div>
+
+        <p class="roomName">{{'PARAMETERS_SELECTION.ROOM_NAME' | translate}}</p>
+        <div id="roomNameInputContainer">
+            <input
+                id="roomName"
+                #name="ngModel"
+                required minlength="4"
+                maxlength="19"
+                type="text"
+                pattern="^[a-zA-Z0-9]+$"
+                ngModel />
+        </div>
+        <p id="instructionRoomName" class="roomName">{{'PARAMETERS_SELECTION.ERROR_ROOM_NAME' | translate}}</p>
+
+        <div class="radioTypeGame">
+            <p class="roomName">{{'PARAMETERS_SELECTION.GAME_MODE' | translate}}</p>
+            <input type="radio" id="publicGame" name="unique" value="public" [checked]="true"(change)="onTypeGameChange($event)">
+            <label for="publique">{{'PARAMETERS_SELECTION.PUBLIC' | translate}}</label><br>
+            <input type="radio" id="privateGame" name="unique" value="private" (change)="onTypeGameChange($event)">
+            <label for="privee">{{'PARAMETERS_SELECTION.PRIVATE' | translate}}</label><br>
+        </div>
+        <div id="passwdDiv">
+            <mat-checkbox
+                id="mdpCheckbox"
+                [(ngModel)]="isChecked">
+                {{'PARAMETERS_SELECTION.PASSWORD' | translate}}
+        </mat-checkbox>
+            <input
+                    id="passwdInput"
+                    placeholder="{{'PARAMETERS_SELECTION.PASSWORD' | translate}}"
+                    #mdp="ngModel"
+                    required
+                    minlength="1"
+                    maxlength="20"
+                    type="text"
+                    name="mdp"
+                    [hidden]="!isChecked"
+                    pattern="^[a-zA-Z0-9]+$"
+                    ngModel
+                />
+            <p id="instructionRoomName" class="roomName" [hidden]="!isChecked">{{'PARAMETERS_SELECTION.ERROR_PASSWORD' | translate}}</p>
+        </div>
+        <div class="container-2">
+            <div class="container-2-box">
+                <mat-form-field appearance="fill" class="multiplayerOptionsMulti">
+                    <mat-label>{{'PARAMETERS_SELECTION.TURN_TIME' | translate}}</mat-label>
+                    <mat-select [(value)]="infoClientService.minutesByTurn">
+                        <mat-option *ngFor="let interval of timeIntervals" [value]="interval.value">
+                            <a (click)="onClickTime(interval.viewValue)"> {{ interval.viewValue }} </a>
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+                <p *ngIf="infoClientService.gameMode==='power-cards'">
+                    <span>{{'PARAMETERS_SELECTION.ACTIVATE_CARD_MODE' | translate}}</span>
+                    <button id="bonusButtonMulti" (click)="showPowerModal()">
+                        {{'PARAMETERS_SELECTION.CARD_LIST' | translate}}
+                    </button>
+                </p>
+            </div>
+        </div>
+        <div class="container-3">
+            <div class="container-3-box">
+                <mat-form-field appearance="fill" id="dictOptionsMulti" class="multiplayerOptionsMulti">
+                    <mat-label>{{'PARAMETERS_SELECTION.USED_DICTIONARY' | translate}}</mat-label>
+                    <mat-select [(value)]="this.mockDictionary.title">
+                        <mat-option *ngFor="let dict of infoClientService.dictionaries" [value]="dict.title">
+                            <h2 class="dictionnarySelection" (click)="onClickDict(dict)">{{ dict.title }}</h2>
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+                <div id="dictionnaryDescriptionMulti">
+                    {{'PARAMETERS_SELECTION.DICTIONARY_DESCRIPTION' | translate}}
+                    <h2>{{ this.mockDictionary.description }}</h2>
+                </div>
+            </div>
+        </div>
+    </div>
+    <button
+        id="startButtonMulti"
+        class="startbutton"
+        (click)="createRoom()"
+        [disabled]="name.invalid || (isChecked && mdp.invalid)"
+    >
+        {{'PARAMETERS_SELECTION.START' | translate}}
+    </button>
+</div>
+
+<!-- The Modal to show the powers available to the player -->
+<div id="powerModalContainer" class="modal" [style.display]="displayPowerModal">
+    <div id="powerModal" class="modal-content">
+        <span id="closeModalX" (click)="hidePowerModal()">X</span>
+        <table id="tablePowers">
+            <thead>
+                <tr>
+                <th>{{'PARAMETERS_SELECTION.POWER_DESCRIPTION' | translate}}</th>
+                <th>{{'PARAMETERS_SELECTION.ACTIVE' | translate}}</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let powerCard of infoClientService.game.powerCards">
+                <td>
+                    <div class="flip-card">
+                        <div class="flip-card-inner">
+                            <div class="flip-card-front">
+                            <img src="./assets/card.png" alt="Avatar" class="cardImg">
+                            </div>
+                            <div class="flip-card-back">
+                                {{translateCardName(powerCard.name)}}
+                            </div>
+                        </div>
+                    </div>
+                </td>
+                <td>
+                    <input
+                        type="checkbox"
+                        id="buttonShowModal"
+                        checked
+                        (click)="onPowerCardClick(powerCard.name)"
+                    >
+                </td>
+                </tr>
+            </tbody>
+        </table>
+        <button
+            mat-raised-button
+            id="cancelBtnPowerModal"
+            class="btnStyle"
+            (click)="this.hidePowerModal()"
+        >
+        {{'PARAMETERS_SELECTION.CONFIRM' | translate}}
+        </button>
+    </div>
+</div>

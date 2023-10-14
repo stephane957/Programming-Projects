@@ -1,0 +1,72 @@
+<div class="justified" id="container">
+    <div class="container-1">
+        <div class="box-1">
+            <mat-icon>person</mat-icon>
+            <p>{{ this.infoClientService.playerName }}{{'MULTIPLAYER_INIT.YOU' | translate}}</p>
+        </div>
+        <div class="box-3">
+            <button class="createButton" mat-button
+                    routerLink="/param-select">{{'MULTIPLAYER_INIT.CREATE_GAME' | translate}}</button>
+        </div>
+        <div *ngIf="this.infoClientService.rooms.length === 0; else show"></div>
+        <ng-template #show>
+            <div class="box-3" *ngIf="this.infoClientService.rooms.length >= 2; else disabled">
+                <button class="createButton" mat-button
+                        (click)="onClickRandom()">{{'MULTIPLAYER_INIT.RANDOM' | translate}}</button>
+            </div>
+            <ng-template #disabled>
+                <div class="box-3" #disabled>
+                    <button class="createButton" mat-button (click)="onClickRandom()"
+                            disabled=true>{{'MULTIPLAYER_INIT.RANDOM' | translate}}</button>
+                </div>
+            </ng-template>
+        </ng-template>
+    </div>
+    <h1 id="roomListTitle">{{'MULTIPLAYER_INIT.LIST_ROOM_GAMES' | translate}}</h1>
+    <div class="roomList">
+        <table id="tableRoom">
+            <thead>
+            <tr>
+                <th>{{'MULTIPLAYER_INIT.ROOM_NAME' | translate}}</th>
+                <th>{{'MULTIPLAYER_INIT.TIME_TURN' | translate}}</th>
+                <th>{{'MULTIPLAYER_INIT.REAL_PLAYERS' | translate}}</th>
+                <th>{{'MULTIPLAYER_INIT.VIRTUAL_PLAYERS' | translate}}</th>
+                <th>{{'MULTIPLAYER_INIT.SPECTATORS' | translate}}</th>
+                <th>{{'MULTIPLAYER_INIT.LIST_PLAYERS' | translate}}</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let room of chooseRooms()">
+                <td (click)="this.onClickGame(room.name)">{{room.name}}</td>
+                <td (click)="this.onClickGame(room.name)">{{room.timeTurn}} min</td>
+                <td (click)="this.onClickGame(room.name)">{{getReelPlayersLength(room)}}</td>
+                <td (click)="this.onClickGame(room.name)">{{getVirtualPlayersLength(room)}} </td>
+                <td (click)="this.onClickGame(room.name)">{{room.spectators.length}} </td>
+                <td (click)="this.onClickMoreInfo(room.name)"><input type="button" id="buttonShowModal"
+                                                                     value="Liste joueurs"></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <!-- The Modal to show the list of players real and virtuel-->
+    <div id="modalListPlayers" class="modal" [style.display]="displayStyleModal">
+        <!-- Modal content -->
+        <div class="modal-content">
+            <span class="close" (click)="this.closeListPlayerModal()">&times;</span>
+            <p id="creatorOfGame" class="listPlayersStyle"></p>
+            <ul id="listPlayer" class="listPlayersStyle"></ul>
+            <ul id="listVP" class="listPlayersStyle"></ul>
+        </div>
+    </div>
+
+    <!-- The Modal to ask for password when entering a game -->
+    <div class="modal" [style.display]="passwdModalStyle">
+        <div class="modal-content">
+            <h1>{{'MULTIPLAYER_INIT.PROTECTED_PASSWORD' | translate}}</h1>
+            <p>
+                {{'MULTIPLAYER_INIT.ENTER_PASSWORD' | translate}}<input type="text" [(ngModel)]="passwordText"/>
+            </p>
+            <button (click)="askForPasswd()">{{'MULTIPLAYER_INIT.BUTTON_ENTER_PASSWORD' | translate}}</button>
+        </div>
+    </div>
+</div>

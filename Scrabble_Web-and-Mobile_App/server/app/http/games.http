@@ -1,0 +1,23 @@
+###
+# Find All Games
+GET  http://localhost:3000/games
+
+###
+# Find Games By Id
+GET  http://localhost:3000/games/1
+
+###
+# Create Games
+POST  http://localhost:3000/games
+Content-Type: application/json
+
+{
+    "roomName": "SalleTest",
+    "players": [],
+    "spectators": [],
+    "winners": [],
+    "numberOfTurns": 20,
+    "gameStartDate": "25/10/2022",
+    "playingTime": "06:30",
+    "nbLetterReserve": 56
+}

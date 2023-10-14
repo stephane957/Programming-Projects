@@ -1,0 +1,99 @@
+.justified {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#container {
+    position: inherit;
+    width: 80%;
+    margin-top: 2.5%;
+    margin-left: 10%;
+    height: 90%;
+    font-size: large;
+    border-radius: 25px;
+    justify-content: center;
+}
+
+#profileWrapper {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+}
+
+#profile {
+    border-radius: 50%;
+    background: transparent;
+    height: 125px;
+}
+
+#statsContainer {
+    margin-top: 2%;
+    margin-bottom: 5%;
+    z-index: 2;
+    text-align: center;
+    width: 70%;
+    height: 44%;
+}
+
+.statsElement {
+    border: solid 2px;
+    font-size: 20px;
+    justify-content: left;
+}
+
+.centerStatsElement {
+    font-size: 20px;
+    border-radius: 5px;
+    margin-left: 25%;
+    font-weight: bolder;
+}
+
+.subcontainer {
+    background-position: center;
+    background-attachment: fixed;
+}
+
+#historyContainer {
+    text-align: center;
+}
+
+.history{
+    display: inline-block;
+    margin-top: 20px;
+    text-align: center;
+    font-size: 17px;
+    padding: 20px;
+    border-radius: 8px;
+}
+
+.button-grid-row{
+    display: flex;
+}
+
+.button-grid-row:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+.button-grid-col {
+    flex: 50%;
+    margin-bottom: 10px;
+    margin-right: 15px;
+    margin-left: 15px;
+}
+
+.matSelect{
+    height: 66px;
+    border-radius: 10px;
+    position: relative;
+    margin: 0 0 20px;
+    padding: 10px;
+}
+
+mat-option {
+    margin: 0;
+}

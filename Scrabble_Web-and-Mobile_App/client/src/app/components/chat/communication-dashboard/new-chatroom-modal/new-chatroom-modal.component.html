@@ -1,0 +1,11 @@
+<div class="container justified">
+    <div class="newChatroom">
+        <h2>{{'GAME.NAME_NEW_ROOM' | translate}}</h2>
+        <mat-form-field>
+            <mat-label>{{'GAME.NAME_ROOM' | translate}}</mat-label>
+            <input matInput [(ngModel)]="name">
+          </mat-form-field>
+        <button mat-button (click)="newChatroom(name)" class="saveButton">{{'GAME.CONFIRM' | translate}}</button>
+    </div>
+    <button class="saveButtonAvatar saveButton" mat-button (click)="closeDialog()">{{'GAME.CLOSE' | translate}}</button>
+</div>

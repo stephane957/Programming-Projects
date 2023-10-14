@@ -1,0 +1,160 @@
+<div class="container justified">
+    <div>
+      <img src="https://i.imgur.com/nyRorRT.png" height="400" alt="Logo Scrabble" />
+    </div>
+    <!-- Sign up form -->
+    <div *ngIf="showSignup" class="card card-container">
+      <form
+        *ngIf="!isSuccessful"
+        name="form"
+        (ngSubmit)="f.form.valid && onSubmit()"
+        #f="ngForm"
+        novalidate
+      >
+        <div>
+          <div>
+              <h2>{{'LOGIN_PAGE.AVATAR' | translate}}</h2>
+              <app-gallery></app-gallery>
+          </div>
+          <label for="username">{{'LOGIN_PAGE.USERNAME' | translate}}</label>
+          <input
+            type="text"
+            class="username"
+            name="username"
+            [(ngModel)]="form.username"
+            required
+            minlength="4"
+            maxlength="20"
+            #username="ngModel"
+          />
+          <div class="alert-danger" *ngIf="username.errors && f.submitted">
+            <div *ngIf="username.errors.required">{{'LOGIN_PAGE.REQUIRED_USERNAME' | translate}}</div>
+            <div *ngIf="username.errors.minlength">
+                {{'LOGIN_PAGE.MIN_USERNAME' | translate}}
+            </div>
+            <div *ngIf="username.errors.maxlength">
+                {{'LOGIN_PAGE.MAX_USERNAME' | translate}}
+            </div>
+          </div>
+        </div>
+        <div>
+          <label for="email">{{'LOGIN_PAGE.EMAIL' | translate}}</label>
+          <input
+            type="email"
+            class="email"
+            name="email"
+            [(ngModel)]="form.email"
+            required
+            email
+            #email="ngModel"
+          />
+          <div class="alert-danger" *ngIf="email.errors && f.submitted">
+            <div *ngIf="email.errors.required">{{'LOGIN_PAGE.REQUIRED_EMAIL' | translate}}</div>
+            <div *ngIf="email.errors.email">
+                {{'LOGIN_PAGE.VALID_EMAIL' | translate}}
+            </div>
+          </div>
+        </div>
+        <div>
+          <label for="password">{{'LOGIN_PAGE.PASSWORD' | translate}}</label>
+          <input
+            type="password"
+            class="password"
+            name="password"
+            [(ngModel)]="form.password"
+            required
+            minlength="6"
+            #password="ngModel"
+          />
+          <div class="alert-danger" *ngIf="password.errors && f.submitted">
+            <div *ngIf="password.errors.required">{{'LOGIN_PAGE.REQUIRED_PASSWORD' | translate}}</div>
+            <div *ngIf="password.errors.minlength">
+                {{'LOGIN_PAGE.MIN_PASSWORD' | translate}}
+            </div>
+          </div>
+        </div>
+        <div>
+          <button class="signUpInBtn">{{'LOGIN_PAGE.SIGN_UP' | translate}}</button>
+        </div>
+        <br>
+        <div>
+            <p>{{'LOGIN_PAGE.ALREADY_ACCOUNT' | translate}}
+                <button (click)="toggleShow()" class="signUpInBtn">{{'LOGIN_PAGE.SIGN_IN' | translate}}</button>
+            </p>
+        </div>
+
+        <div class="alert alert-warning" *ngIf="f.submitted && isSignUpFailed">
+            {{'LOGIN_PAGE.SIGN_UP_FAILED' | translate}}<br />{{ errorMessage }}
+        </div>
+      </form>
+
+      <div class="alert alert-success" *ngIf="isSuccessful">
+          {{'LOGIN_PAGE.REGISTRATION_SUCCESSFUL' | translate}}
+      </div>
+    </div>
+
+    <!-- Sign in form -->
+    <div *ngIf="!showSignup" class="card card-container">
+        <form
+          *ngIf="!isSuccessful"
+          name="form"
+          (ngSubmit)="f.form.valid && onSubmit()"
+          #f="ngForm"
+          novalidate
+        >
+          <div>
+            <label for="email">{{'LOGIN_PAGE.EMAIL' | translate}}</label>
+            <input
+              type="email"
+              class="email"
+              name="email"
+              [(ngModel)]="form.email"
+              required
+              email
+              #email="ngModel"
+            />
+            <div class="alert-danger" *ngIf="email.errors && f.submitted">
+              <div *ngIf="email.errors.required">{{'LOGIN_PAGE.REQUIRED_EMAIL' | translate}}</div>
+              <div *ngIf="email.errors.email">
+                  {{'LOGIN_PAGE.VALID_EMAIL' | translate}}
+              </div>
+            </div>
+          </div>
+          <div>
+            <label for="password">{{'LOGIN_PAGE.PASSWORD' | translate}}</label>
+            <input
+              type="password"
+              class="password"
+              name="password"
+              [(ngModel)]="form.password"
+              required
+              minlength="6"
+              #password="ngModel"
+            />
+            <div class="alert-danger" *ngIf="password.errors && f.submitted">
+              <div *ngIf="password.errors.required">{{'LOGIN_PAGE.REQUIRED_PASSWORD' | translate}}</div>
+              <div *ngIf="password.errors.minlength">
+                  {{'LOGIN_PAGE.MIN_PASSWORD' | translate}}
+              </div>
+            </div>
+          </div>
+          <div>
+            <button class="signUpInBtn">{{'LOGIN_PAGE.SIGN_IN' | translate}}</button>
+          </div>
+          <br>
+          <div>
+              <p>{{'LOGIN_PAGE.NO_ACCOUNT' | translate}}
+                <button (click)="toggleShow()" class="signUpInBtn">{{'LOGIN_PAGE.SIGN_UP' | translate}}</button>
+              </p>
+          </div>
+
+          <div class="alert alert-warning" *ngIf="f.submitted && isSignUpFailed">
+              {{'LOGIN_PAGE.SIGN_UP_FAILED' | translate}}<br />{{ errorMessage }}
+          </div>
+        </form>
+
+        <div class="alert alert-success" *ngIf="isSuccessful">
+            {{'LOGIN_PAGE.REGISTRATION_SUCCESSFUL' | translate}}
+        </div>
+      </div>
+  </div>

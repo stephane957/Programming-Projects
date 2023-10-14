@@ -1,0 +1,19 @@
+<div class="container justified">
+    <div class="nameEdit">
+        <h1>{{'EDIT_PROFILE.ACTUAL_NAME' | translate}}{{this.getUsername()}}</h1>
+        <label>{{'EDIT_PROFILE.EDIT_NAME' | translate}}</label>
+        <div>
+            <mat-form-field style="transition: color 2s ease;">
+                <mat-label>{{'EDIT_PROFILE.NEW_NAME' | translate}}</mat-label>
+                <input matInput [(ngModel)]="name">
+              </mat-form-field>
+            <button mat-button (click)="updateUsername()" class="saveButton">{{'EDIT_PROFILE.SAVE_NAME' | translate}}</button>
+        </div>
+    </div>
+    <div class="avatarEdit">
+        <h2>{{'EDIT_PROFILE.EDIT_AVATAR' | translate}}</h2>
+        <app-gallery></app-gallery>
+        <button class="saveButton" mat-button (click)="updateAvatar()">{{'EDIT_PROFILE.SAVE_AVATAR' | translate}}</button>
+    </div>
+    <button class="saveButton" mat-button (click)="closeDialog()">{{'EDIT_PROFILE.CLOSE' | translate}}</button>
+</div>

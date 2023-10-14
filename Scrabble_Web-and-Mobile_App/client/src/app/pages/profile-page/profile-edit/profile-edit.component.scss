@@ -1,0 +1,33 @@
+.container {
+    height: 60%;
+    // 
+    height: auto;
+    background-position: center;
+    background-attachment: fixed;
+}
+
+.justified {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.nameEdit {
+    text-align: center
+}
+
+.avatarEdit {
+    margin-top: 50px;
+    text-align: center;
+    align-items: center;
+    align-self: center;
+}
+
+.saveButton {
+    // 
+    align-self: center;
+    // 
+    margin-left: 10%;
+    margin-right: 10%;
+    margin-top: 10px;
+}

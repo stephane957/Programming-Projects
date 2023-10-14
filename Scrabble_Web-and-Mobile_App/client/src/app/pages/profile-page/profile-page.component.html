@@ -1,0 +1,46 @@
+<div class="justified" id="container">
+    <div class="subcontainer justified">
+        <img [src]="userService.user.avatarUri" id="profile"/>
+        <h1 style="margin: 0 0 2px;">{{this.userService.user.name}}</h1>
+        <button class="editButton" mat-flat-button (click)="openEditProfileComponent()">{{'PROFILE.EDIT' | translate}}</button>
+        <div id="statsContainer">
+            <h2>{{'PROFILE.STATS' | translate}}</h2>
+            <mat-grid-list cols="2" rowHeight="2:1" id="statsList">
+                <mat-grid-tile class="statsElement">{{'PROFILE.GAMES_PLAYED' | translate}}{{this.userService.user.gamesPlayed}}</mat-grid-tile>
+                <mat-grid-tile class="statsElement">{{'PROFILE.GAMES_WON' | translate}}{{this.userService.user.gamesWon}}</mat-grid-tile>
+                <mat-grid-tile class="statsElement">{{'PROFILE.AVERAGE_SCORE' | translate}}{{this.userService.user.averagePointsPerGame?.toFixed(2)}}</mat-grid-tile>
+                <mat-grid-tile class="statsElement">{{'PROFILE.AVERAGE_TIMES' | translate}}{{this.millisToMinutesAndSeconds()}}</mat-grid-tile>
+                <mat-grid-tile class="centerStatsElement">{{'PROFILE.ELO' | translate}}{{this.userService.user.elo}}</mat-grid-tile>
+            </mat-grid-list>
+        </div>
+        <div class="button-grid-row">
+            <div class="button-grid-col">
+                <button mat-flat-button (click)="openActionHistoryComponent()" class="history">{{'PROFILE.HISTORY_CONNECTIONS' | translate}}</button>
+            </div>
+            <div class="button-grid-col">
+                <button mat-flat-button (click)="openGameHistoryComponent()" class="history">{{'PROFILE.HISTORY_GAMES' | translate}}</button>
+            </div>
+            <div class="button-grid-col">
+                <button mat-flat-button (click)="openFavouriteGamesComponent()" class="history">{{'PROFILE.FAVORITES' | translate}}</button>
+            </div>
+        </div>
+        <div class="button-grid-row">
+            <mat-form-field appearance="fill" class="matSelect">
+                <mat-label>{{'PROFILE.LANGUAGE' | translate}}</mat-label>
+                <mat-select [(ngModel)]="langSelected">
+                    <mat-option *ngFor="let lang of langList" [value]="lang" (click)="onClickLang(lang)">
+                        <h2 >{{ lang }}</h2>
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+            <mat-form-field appearance="fill" class="matSelect">
+                <mat-label>{{'PROFILE.THEMES' | translate}}</mat-label>
+                <mat-select [(ngModel)]="themeSelected">
+                    <mat-option *ngFor="let theme of themeList" [value]="theme" (click)="onClickTheme()">
+                        <h2 >{{ theme }}</h2>
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+        </div>
+    </div>
+</div>

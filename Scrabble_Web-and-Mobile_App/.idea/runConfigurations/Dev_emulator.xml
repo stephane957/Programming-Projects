@@ -1,0 +1,7 @@
+<component name="ProjectRunConfigurationManager">
+  <configuration default="false" name="Dev emulator" type="FlutterRunConfigurationType" factoryName="Flutter">
+    <option name="additionalArgs" value="--dart-define=ENVIRONMENT=DEVEMU" />
+    <option name="filePath" value="$PROJECT_DIR$/client_leger/lib/main.dart" />
+    <method v="2" />
+  </configuration>
+</component>

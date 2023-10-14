@@ -1,0 +1,54 @@
+
+.container {
+    min-height: 100vh;
+    height: auto;
+    background-image: url('../../../../assets/scrabble-background.jpg');
+    background-position: center;
+    background-attachment: fixed;
+}
+.justified {
+    display: flex;
+    flex-direction: column;
+    // justify-content: space-between;
+    align-items: center;
+}
+
+#profile {
+    border-radius: 50%;
+    background: transparent;
+    height: 125px;
+}
+
+#profileWrapper {
+    width: 50%;
+    height: 50%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+}
+
+#statsContainer {
+    text-align: center;
+    width: 50%;
+}
+
+#statsList {
+    padding-bottom: calc(45% + 0px);
+}
+
+.statsElement {
+    font-size: 20px;
+    justify-content: left;
+    border-radius: 5px;
+}
+
+.mat-grid-tile-content {
+    justify-content: left;
+}
+
+.subcontainer {
+    background-position: center;
+    background-attachment: fixed;
+}

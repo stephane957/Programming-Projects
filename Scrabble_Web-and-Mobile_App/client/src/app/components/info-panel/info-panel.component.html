@@ -1,0 +1,239 @@
+<div id="main">
+    <div id="divHandlerTurns">
+        <h2 id="playerToPlay">{{ infoClientService.displayTurn }}</h2>
+        <button mat-raised-button id="timer">
+            <app-timer></app-timer>
+        </button>
+        <button
+            *ngIf="!infoClientService.isSpectator"
+            mat-raised-button
+            [disabled]="!infoClientService.isTurnOurs || infoClientService.game.gameFinished"
+            id="passBtn"
+            class="btnStyle"
+            (click)="skipTurnButton()"
+        >{{'GAME.INFO_PANEL.PASS' | translate}}
+        </button>
+    </div>
+    <div *ngIf="!infoClientService.isSpectator" class="btnsContainer">
+        <button
+            mat-raised-button
+            id="exchangeBtn"
+            class="btnStyle"
+            (click)="this.onExchangeClick()"
+            [disabled]= "!infoClientService.isTurnOurs || !this.drawingService.areLettersRightClicked(infoClientService.player.stand) || infoClientService.game.gameFinished"
+        >{{'GAME.INFO_PANEL.EXCHANGE' | translate}}
+        </button>
+        <button
+            mat-raised-button
+            id="cancelBtn"
+            class="btnStyle"
+            (click)="this.onCancelClick()"
+            [disabled]= "!infoClientService.isTurnOurs|| !this.drawingService.areLettersRightClicked(infoClientService.player.stand) || infoClientService.game.gameFinished"
+        >{{'GAME.INFO_PANEL.CANCEL' | translate}}
+        </button>
+        <button
+            mat-raised-button
+            id="playBtn"
+            class="btnStyle"
+            (click)= "this.placeGraphicService.manageKeyboardEvent(infoClientService.game, infoClientService.player, enter, socketService.socket)"
+            [disabled]= "!infoClientService.isTurnOurs || !this.placeGraphicService.isLettersDrawnSizeAboveZero() || infoClientService.game.gameFinished"
+        >{{'GAME.INFO_PANEL.PLAY' | translate}}
+         </button>
+    </div>
+    <div id="optionButtonDiv" class="btnsContainer" style="margin-top:10px">
+        <button
+        mat-raised-button
+        matTooltip="Abandonner"
+        *ngIf="
+            !infoClientService.game.gameFinished &&
+            infoClientService.game.gameStarted &&
+            !infoClientService.isSpectator"
+        (click)="onClickGiveUpButton()"
+        class="optionButton"
+        >
+            {{'GAME.SIDEBAR.GIVE_UP' | translate}}
+        </button>
+        <button
+            mat-raised-button
+            *ngIf="shouldLeaveGameBe()"
+            id="cancelGame"
+            class="optionButton"
+            (click)="leaveGame()"
+        >
+            {{'GAME.SIDEBAR.QUIT' | translate}}
+        </button>
+        <button
+            mat-raised-button
+            *ngIf="infoClientService.creatorShouldBeAbleToStartGame && !infoClientService.isSpectator"
+            id="startGame"
+            class="optionButton"
+            (click)="startGame()"
+        >
+          {{'GAME.SIDEBAR.START_GAME' | translate}}
+        </button>
+        <button
+            mat-raised-button
+            *ngIf="shouldSpecBeAbleToBePlayer()"
+            id="specBecomePlayer"
+            class="optionButton"
+            (click)="spectWantsToBePlayer()"
+        >
+            {{'GAME.SIDEBAR.TAKE_PLACE' | translate}}
+        </button>
+        <button
+            mat-raised-button
+            *ngIf="
+                !infoClientService.isSpectator
+                && infoClientService.game.gameStarted
+                && infoClientService.isTurnOurs
+                && infoClientService.game.gameMode === 'power-cards'
+                && !infoClientService.powerUsedForTurn
+            "
+            id="playerBecomeSpec"
+            class="optionButton"
+            (click)="showPowerList()"
+        >
+            {{'GAME.SIDEBAR.LIST_POWERS' | translate}}
+        </button>
+    </div>
+    <br>
+
+    <table id="tableRoom-info-pannel">
+        <thead>
+          <tr>
+            <th>{{'GAME.INFO_PANEL.AVATAR' | translate}}</th>
+            <th>{{'GAME.INFO_PANEL.PLAYER_NAME' | translate}}</th>
+            <th>{{'GAME.INFO_PANEL.SCORE' | translate}}</th>
+          </tr>
+        </thead>
+        <tbody>
+            <!-- TODO maybe change that ? It's a bit ugly but had no idea how to do otherwise -->
+          <tr *ngFor="let player of infoClientService.actualRoom.players">
+            <td><img [src]="player.avatarUri" class="profile"></td>
+            <td>{{player.name}}</td>
+            <td>{{player.score}}</td>
+          </tr>
+        </tbody>
+      </table>
+</div>
+
+<!-- The Modal to show the powers available to the player -->
+<div class="modal" [style.display]="infoClientService.displayPowerModal">
+    <div class="modal-content" >
+        <span id="closeModalX" (click)="hidePowerModal()">X</span>
+        <span *ngIf="infoClientService.player.powerCards.length === 0">
+            {{'GAME.SIDEBAR.NO_POWERS' | translate}} {{3 - infoClientService.player.nbValidWordPlaced}} {{'GAME.SIDEBAR.VALID_WORD' | translate}}
+        </span>
+        <span *ngIf="infoClientService.player.powerCards.length > 0" id="titlePowerCardList">{{'GAME.SIDEBAR.AVAILABLE_CARDS' | translate}}</span>
+        <table *ngIf="infoClientService.player.powerCards.length > 0" class="table">
+            <tbody>
+              <tr *ngFor="let powerCard of infoClientService.player.powerCards">
+                <td>
+                  <div class="flip-card">
+                    <div class="flip-card-inner">
+                      <div class="flip-card-front">
+                        <img src="./assets/card.png" alt="Avatar" class="cardImg">
+                      </div>
+                      <div class="flip-card-back">
+                        <br>{{translateCardName(powerCard.name)}}
+                      </div>
+                    </div>
+                  </div>
+                </td>
+                <td>
+                    <button
+                        mat-raised-button
+                        class="validateBtn"
+                        id="buttonShowModal"
+                        (click)="onPowerCardClick(powerCard.name)"
+                    >{{'GAME.SIDEBAR.USE' | translate}}</button>
+                </td>
+              </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<!-- the modal to choose the target player in case the player uses the card "EXCHANGE_STAND" -->
+<div class="modal" [style.display]="infoClientService.displayExchStandModal">
+    <div class="modal-content" >
+        <span>{{'GAME.SIDEBAR.CLICK_PLAYER' | translate}}</span>
+        <div if="displayLogoPlayers">
+            <table class="table">
+                <thead>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let player of infoClientService.actualRoom.players">
+                        <td *ngIf="player.name !== infoClientService.player.name" (click)="onExchangeStandChoice(player.name)">
+                            <img
+                                [src]="player.avatarUri"
+                                class="profile"
+                            >
+                        </td>
+                        <td *ngIf="player.name !== infoClientService.player.name" (click)="onExchangeStandChoice(player.name)">
+                            {{player.name}}
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<!-- the modal to choose the target letter on the satnd in case the player uses the card "EXCHANGE_LETTER_JOKER" -->
+<div class="modal" [style.display]="infoClientService.displayExchLetterModal">
+    <div class="modal-content" >
+        <span style="font-size:16px">{{'GAME.SIDEBAR.CLICK_ON_LETTER_EXCHANGE' | translate}}</span>
+        <br><br>
+        <div id="divLetterStand" *ngFor="let tile of infoClientService.player.stand; let indexOfelement=index;">
+            <span
+                class="letter"
+                id="{{indexOfelement}}"
+                (click)="onChooseLetterToExchange(indexOfelement)"
+            >
+                {{tile.letter.value}}
+            </span>
+        </div>
+        <br><br>
+        <span style="font-size:16px">{{'GAME.SIDEBAR.CLICK_ON_LETTER_RESERVE' | translate}}</span>
+        <br><br>
+        <div id="divLetterStand" *ngFor="let letter of this.infoClientService.letterReserve; let indexOfelement=index;">
+            <!-- +7 necessary to not confond the letter to exchange from the one to take from the reserve-->
+            <span
+                class="letter"
+                id="{{indexOfelement + 7}}"
+                (click)="onChooseLetterToTakeFromReserve(indexOfelement, letter)"
+            >
+                {{letter.toLowerCase()}}
+            </span>
+        </div>
+        <br><br>
+        <button
+            mat-raised-button
+            class="validateBtn"
+            (click)="activateLetterExchange()"
+        >
+            {{'GAME.SIDEBAR.VALIDATE' | translate}}
+        </button>
+    </div>
+</div>
+
+<!-- the modal to choose the target letter on the satnd in case the player uses the card "EXCHANGE_LETTER_JOKER" -->
+<div class="modal" [style.display]="infoClientService.displayTransformTileModal">
+    <div class="modal-content" >
+        <span>{{'GAME.SIDEBAR.ENTER_COORDINATES' | translate}}</span>
+        <br>
+        <mat-form-field id="letterToChangeField">
+            <mat-label>{{'GAME.SIDEBAR.COORDINATES' | translate}}</mat-label>
+            <input matInput placeholder="Ex. a9" [(ngModel)]='coordsTileToChange'>
+        </mat-form-field>
+        <button
+            mat-raised-button
+            class="validateBtn"
+            (click)="validateTileChangeCoords()"
+        >
+            {{'GAME.SIDEBAR.VALIDATE' | translate}}
+        </button>
+    </div>
+</div>
+

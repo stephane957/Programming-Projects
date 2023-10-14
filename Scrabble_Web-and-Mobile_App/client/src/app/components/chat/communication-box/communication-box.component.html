@@ -1,0 +1,43 @@
+<div id="commBox" (click)="onLeftClickComBox()">
+    <div class="wrapper">
+        <div>
+            <button
+                mat-raised-button
+                id="delChatRoomBtn"
+                class="btnStyle"
+                (click)="deleteChatRoom()"
+                *ngIf="isCreator()"
+                >{{'GAME.DELETE_CHATROOM_BTN' | translate}}
+            </button>
+        </div>
+        <div class="sidebar" #scrollFrame>
+            <div class="wholeMessage" *ngFor="let msg of getPlayerHistory()" #commands>
+                <img [ngClass]="chooseMsgClassAvatar(msg)" [src]="infoClientService.userAvatars.get(msg.senderName)" class="profile"/>
+                <div [ngClass]="chooseMsgClass(msg)" class="senderName msg">{{ msg.senderName }}</div>
+                <div [ngClass]="chooseMsgClass(msg)" class="msg">
+                    {{ msg.msg }}<span [ngClass]="chooseMsgClass(msg)" class="timestamp msg">{{ convertTimestamp(msg.timestamp) }}</span>
+                </div>
+            </div>
+
+            <div class="wholeMessage" *ngFor="let msg of getSpecHistory()" #commands>
+                <img [ngClass]="chooseMsgClassAvatar(msg)" [src]="infoClientService.userAvatars.get(msg.senderName)" class="profile"/>
+                <div [ngClass]="chooseMsgClass(msg)" class="senderName msg">{{ msg.senderName }}</div>
+                <div [ngClass]="chooseMsgClass(msg)" class="msg">
+                    {{ msg.msg }}<span [ngClass]="chooseMsgClass(msg)" class="timestamp msg">{{ convertTimestamp(msg.timestamp) }}</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="input">
+        <input
+            [defaultValue]=""
+            id="inputCommBox"
+            class="inputField"
+            type="text"
+            placeholder="{{'GAME.PLACEHOLDER_CHAT' | translate}}"
+            [(ngModel)]="inputInComBox"
+            (keydown.enter)="onEnterComBox()"
+        />
+        <button mat-button class="btnStyle" (click)="onEnterComBox()">{{'GAME.SEND' | translate}}</button>
+    </div>
+</div>

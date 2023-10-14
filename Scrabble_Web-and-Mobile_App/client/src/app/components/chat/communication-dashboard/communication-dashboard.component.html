@@ -1,0 +1,46 @@
+<div class="container" [ngClass]="{notInGame: this.router.url !== '/game'}">
+  <popout-window #popoutWindow1>
+    <div id="main">
+      <div class="mainDiv">
+        <div id="leftDiv">
+          <div>
+            <div class="buttons">
+              <button id="detach" class="btnStyle action_btn detachButton" mat-button (click)="popoutWindow1.popOut();">{{'DETACH' | translate}}<mat-icon>arrow_drop_up</mat-icon></button>
+              <button id="attach" class="btnStyle action_btn attachButton" mat-button (click)="popoutWindow1.popIn();">{{'ATTACH' | translate}}<mat-icon>arrow_drop_down</mat-icon></button>
+            </div>
+            <div id="titleChatDashBoard">
+              {{'GAME.CHAT_ROOM' | translate}}
+            </div>
+            <button mat-button class="btnStyle mainButton" (click)="openNewChatroomModal()">
+                {{'GAME.CREATE_CHAT_ROOM' | translate}}
+            </button>
+          </div>
+          <div class="rooms">
+            <button mat-button class="btnStyle mainButton" (click)="openJoinChatRoomModal()">
+                {{'GAME.JOIN_CHAT_ROOM' | translate}}
+            </button>
+            <div class="listChatRoom">
+              <div *ngFor="let chatroom of infoClientService.chatRooms">
+                <div
+                  [ngClass]="classChatRoomElement(chatroom.name)"
+                  class="chatRoomElement mainButton"
+                  (click)="onChatRoomSelect(chatroom)"
+                >{{chatroom.name}}
+                  <mat-icon
+                    *ngIf="chatroom.name !== 'game' && chatroom.name !== 'general'"
+                    class="leaveIcon"
+                    (click)="onLeaveChatRoomClick(chatroom.name)"
+                    >exit_to_app
+                  </mat-icon>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="chatroom">
+          <app-communication-box [actualChatRoom]="infoClientService.currSelectedChatroom"></app-communication-box>
+        </div>
+      </div>
+    </div>
+  </popout-window>
+</div>

@@ -1,0 +1,120 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.closeButton {
+    background-color: transparent;
+    position: fixed;
+    top: 10%;
+    right: 10%;
+    margin-bottom: 0%;
+    color: black;
+}
+
+.closeButton:hover {
+    color: red;
+}
+
+.title {
+    font-size: x-large;
+    text-align: center;
+    justify-content: center;
+    margin-top: 2%;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    margin-right: 50px;
+}
+
+// General stats of the game
+#roomStats {
+    margin-bottom: 5px;
+    //font-size: large;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    overflow-y: auto;
+}
+
+#roomStats ul {
+    list-style: none;
+}
+
+#roomStats li {
+    margin-bottom: 15px;
+    margin-top: 10px;
+}
+
+.two-grid-row {
+    display: flex;
+}
+
+.two-grid-row:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+.two-grid-col {
+    flex: 50%;
+    margin-bottom: 10px;
+}
+
+#roomStats::-webkit-scrollbar {
+    width: 8px;
+    // Height of horizontal scroll bar
+    height: 10px;
+}
+#roomStats::-webkit-scrollbar-track {
+    // background: wheat;
+}
+#roomStats::-webkit-scrollbar-thumb {
+    // background: #0C483F;
+    border-radius: 8px;
+}
+
+// Stats specific to one player
+#playersStats {
+    margin-bottom: 5px;
+
+    //font-size: large;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    overflow-y: auto;
+}
+
+.players-grid-row {
+    display: flex;
+}
+
+.players-grid-row:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+.players-grid-col {
+    flex: 50%;
+    margin-bottom: 10px;
+    margin-right: 15px;
+    justify-content: center;
+}
+
+#playersStats ul {
+    list-style: none;
+}
+
+#playersStats li {
+    margin-bottom: 15px;
+    margin-top: 10px;
+}
+
+#playersStats::-webkit-scrollbar {
+    width: 8px;
+    // Height of horizontal scroll bar
+    height: 10px;
+}
+#playersStats::-webkit-scrollbar-track {
+    // background: wheat;
+}
+#playersStats::-webkit-scrollbar-thumb {
+    // background: #0C483F;
+    border-radius: 8px;
+}

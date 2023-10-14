@@ -1,0 +1,101 @@
+<div class="container">
+    <span
+        class="material-symbols-outlined iconLogout"
+        routerLink="/login"
+        (click)="logOut()"
+    >
+    logout
+    </span>
+    <div class="container justified">
+        <img src="https://i.imgur.com/nyRorRT.png" height="400" alt="Logo Scrabble" />
+        <input type="image" [src]="userService.user.avatarUri" class="profile" routerLink="/profile"/>
+        <!-- <div>
+            <button 
+                mat-flat-button 
+                class="button"
+                routerLink="/multiplayer-init" 
+                (click)="setGameMode('classic')"
+            >
+                {{'GAME_MODE_OPTIONS.CLASSIC_MODE' | translate}}
+            </button>
+            <button 
+                mat-flat-button 
+                class="button" 
+                routerLink="/ranked-init" 
+                (click)="setGameMode('Ranked')"
+            >
+                {{'GAME_MODE_OPTIONS.RANKED_MODE' | translate}}
+            </button>
+            <button 
+                mat-flat-button 
+                class="button"
+                routerLink="/multiplayer-init" 
+                (click)="setGameMode('power-cards')"
+            >
+                {{'GAME_MODE_OPTIONS.POWER_CARD_MODE' | translate}}
+            </button>
+        </div> -->
+        <div>
+            <div class="flip-card" routerLink="/multiplayer-init" (click)="setGameMode('classic')">
+                <div class="flip-card-inner">
+                    <div class="flip-card-front">
+                        <br><br><br>
+                        {{'GAME_MODE_OPTIONS.CLASSIC_MODE' | translate}}
+                        <span class="material-symbols-outlined iconGameModeBL">sentiment_satisfied</span>
+                        <span class="material-symbols-outlined iconGameModeTL">sentiment_satisfied</span>
+                        <span class="material-symbols-outlined iconGameModeTR">sentiment_satisfied</span>
+                        <span class="material-symbols-outlined iconEnterGameMode">sentiment_satisfied</span>
+                    </div>
+                    <div class="flip-card-back">
+                        <br><br><br><br>
+                        {{'GAME_MODE_OPTIONS.CLASSIC_MODE_DESCRIPTION' | translate}}
+                        <span class="material-symbols-outlined iconGameModeBL">sentiment_satisfied</span>
+                        <span class="material-symbols-outlined iconGameModeTL">sentiment_satisfied</span>
+                        <span class="material-symbols-outlined iconGameModeTR">sentiment_satisfied</span>
+                        <span class="material-symbols-outlined iconEnterGameMode">sentiment_satisfied</span>
+                    </div>
+                </div>
+            </div>
+            <div class="flip-card" routerLink="/ranked-init" (click)="setGameMode('Ranked')">
+                <div class="flip-card-inner" >
+                    <div class="flip-card-front">
+                        <br><br><br>
+                        {{'GAME_MODE_OPTIONS.RANKED_MODE' | translate}}
+                        <span class="material-symbols-outlined iconGameModeBL">swords</span>
+                        <span class="material-symbols-outlined iconGameModeTL">swords</span>
+                        <span class="material-symbols-outlined iconGameModeTR">swords</span>
+                        <span class="material-symbols-outlined iconEnterGameMode">swords</span>
+                    </div>
+                    <div class="flip-card-back">
+                        <br><br><br><br>
+                        {{'GAME_MODE_OPTIONS.RANKED_MODE_DESCRIPTION' | translate}}
+                        <span class="material-symbols-outlined iconGameModeBL">swords</span>
+                        <span class="material-symbols-outlined iconGameModeTL">swords</span>
+                        <span class="material-symbols-outlined iconGameModeTR">swords</span>
+                        <span class="material-symbols-outlined iconEnterGameMode">swords</span>
+                    </div>
+                </div>
+            </div>
+            <div class="flip-card" routerLink="/multiplayer-init" (click)="setGameMode('power-cards')">
+                <div class="flip-card-inner">
+                    <div class="flip-card-front">
+                        <br><br><br>
+                        {{'GAME_MODE_OPTIONS.POWER_CARD_MODE' | translate}}
+                        <span class="material-symbols-outlined iconGameModeBL">magic_button</span>
+                        <span class="material-symbols-outlined iconGameModeTL">magic_button</span>
+                        <span class="material-symbols-outlined iconGameModeTR">magic_button</span>
+                        <span class="material-symbols-outlined iconEnterGameMode">magic_button</span>
+                    </div>
+                    <div class="flip-card-back">
+                        <br><br><br><br>
+                        {{'GAME_MODE_OPTIONS.POWER_CARD_MODE_DESCRIPTION' | translate}}
+                        <span class="material-symbols-outlined iconGameModeBL">magic_button</span>
+                        <span class="material-symbols-outlined iconGameModeTL">magic_button</span>
+                        <span class="material-symbols-outlined iconGameModeTR">magic_button</span>
+                        <span class="material-symbols-outlined iconEnterGameMode">magic_button</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

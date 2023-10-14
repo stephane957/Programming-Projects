@@ -1,0 +1,27 @@
+<div id="container" class="center">
+    <div id="container-content">
+        <div class="container-1">
+            <div class="box-1">
+                <h1>{{'RANKED.MATCHMAKING_IN_PROGRESS' | translate}}</h1>
+                <br />
+                <mat-spinner class='mat-spinner-color'></mat-spinner>
+                <br />
+                <div class= "font-size-30" >{{timerService.matchmakingDisplayTimer}}</div>
+                <div class="modal" *ngIf="this.rankedService.isShowModal === true">
+                    <div class="modal-content" >
+                        <h1>{{'RANKED.GAME_FOUND' | translate}}</h1>
+                        <div class= "font-size-30">{{timerService.displayTimer}}</div>
+                        <br>
+                        <button class="accept-button" (click)="acceptMatch()"
+                        [ngClass]="{'green' : this.rankedService.matchAccepted}"
+                        >{{'RANKED.ACCEPT' | translate}}</button>
+                        <button class="refuse-button" (click)="refuseMatch()"
+                        routerLink="/ranked-init"
+                        >{{'RANKED.REFUSE' | translate}}</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

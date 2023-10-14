@@ -1,0 +1,3 @@
+###
+# Find All Users
+GET  http://localhost:3000/avatar

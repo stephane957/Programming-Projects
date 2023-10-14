@@ -1,0 +1,92 @@
+<div id="mat-dialog-container">
+    <div><button mat-icon-button (click)="closeModalEndGame()" class="closeButton"> <mat-icon> close </mat-icon></button></div>
+
+    <div class="title-box">
+        <h1 mat-dialog-title class="title">{{'RESULT.RESULT_GAME' | translate}}</h1>
+    </div>
+    <div mat-dialog-content id="roomStats">
+        <ul>
+            <li>{{'RESULT.ROOM' | translate}}<b class="result">{{roomName}}</b></li>
+            <li>{{'RESULT.CREATOR' | translate}}<b class="result">{{this.creator}}</b></li>
+            <div *ngIf="this.infoClientService.actualRoom.spectators.length !== 0">
+                <li>{{'RESULT.SPECTATORS' | translate}}</li>
+                <div *ngFor="let spect of this.infoClientService.actualRoom.spectators" class="two-grid-row">
+                    <div class="two-grid-col" style="margin-right: -94%">
+                        <b>{{'RESULT.NAME' | translate}}</b>
+                    </div>
+                    <div class="two-grid-col">
+                        <b class="result"> {{spect.name}} </b>
+                    </div>
+                </div>
+            </div>
+            <li>{{'RESULT.WINNER' | translate}}</li>
+            <div *ngFor="let winner of this.infoClientService.game.winners" class="two-grid-row">
+                <div class="two-grid-col" style="margin-right: -60%">
+                    <b>{{'RESULT.NAME' | translate}}<b class="result">{{winner.name}} </b></b>
+                </div>
+                <div class="two-grid-col">
+                    <span>{{'RESULT.SCORE' | translate}}<b class="result">{{winner.score}} </b></span>
+                </div>
+            </div>
+            <li>{{'RESULT.NUMBER_OF_LETTERS_LEFT' | translate}}<b class="result">{{infoClientService.game.nbLetterReserve}}</b></li>
+            <li>{{'RESULT.NUMBER_TURNS' | translate}}<b class="result">{{this.numberOfTurns}}</b></li>
+            <li>{{'RESULT.GAME_LENGTH' | translate}}<b class="result">{{this.playingTime}}</b></li>
+            <li>{{'RESULT.GAME_START_TIME' | translate}}<b class="result">{{this.gameStartDate}}</b></li>
+            <li *ngIf="!infoClientService.isSpectator">{{'RESULT.ADD_GAME_FAVORITE_QUESTION' | translate}}<button mat-flat-button class="btnStyle" (click)="addGameToFavourites(); clicked=true" [disabled]="clicked">{{'RESULT.ADD_GAME_FAVORITE' | translate}}</button></li>
+        </ul>
+    </div>
+    <div class="title-box">
+        <h1 mat-dialog-title class="title">{{'RESULT.STATS' | translate}}</h1>
+    </div>
+    <div mat-dialog-content id="playersStats">
+        <div class="players-grid-row">
+            <div class="players-grid-col">
+                <ul>
+                    <h2 mat-dialog-title>{{'RESULT.PLAYER' | translate}}<a (click)="this.openProfilePage(this.players[0])" [ngDisableLink]="isLinkEnabled(this.players[0])" >
+                        {{this.players[0].name}}</a>
+                    </h2>
+                    <li>{{'RESULT.SCORE2' | translate}}<b class="result">{{this.players[0].score}} </b></li>
+                    <li>{{'RESULT.LETTER_ON_STAND' | translate}}<b class="result">{{this.lettersOnStand(this.players[0])}}</b></li>
+                    <li>{{'RESULT.NUMBER_TURNS_IN_GAME' | translate}}<b class="result">{{this.players[0].turn}}</b></li>
+                    <li *ngIf="this.infoClientService.game.gameMode === 'Ranked'">{{'RESULT.ELO' | translate}}<b class="result">{{this.players[0].elo}}+{{this.newPlayersElo[0].elo - this.players[0].elo}} = {{this.newPlayersElo[0].elo}}</b></li>
+                </ul>
+            </div>
+            <div class="players-grid-col">
+                <ul>
+                    <h2 mat-dialog-title>{{'RESULT.PLAYER' | translate}}<a (click)="this.openProfilePage(this.players[1])" [ngDisableLink]="isLinkEnabled(this.players[1])" >
+                        {{this.players[1].name}}</a>
+                    </h2>
+                    <li>{{'RESULT.SCORE2' | translate}}<b class="result">{{this.players[1].score}} </b></li>
+                    <li>{{'RESULT.LETTER_ON_STAND' | translate}}<b class="result">{{this.lettersOnStand(this.players[1])}}</b></li>
+                    <li>{{'RESULT.NUMBER_TURNS_IN_GAME' | translate}}<b class="result">{{this.players[1].turn}}</b></li>
+                    <li *ngIf="this.infoClientService.game.gameMode === 'Ranked'">{{'RESULT.ELO' | translate}}<b class="result">{{this.players[1].elo}}+{{this.newPlayersElo[1].elo - this.players[1].elo}} = {{this.newPlayersElo[1].elo}}</b></li>
+                </ul>
+            </div>
+            <div class="players-grid-col">
+                <ul>
+                    <h2 mat-dialog-title>{{'RESULT.PLAYER' | translate}}<a (click)="this.openProfilePage(this.players[2])" [ngDisableLink]="isLinkEnabled(this.players[2])" >
+                        {{this.players[2].name}}</a>
+                    </h2>
+                    <li>{{'RESULT.SCORE2' | translate}}<b class="result">{{this.players[2].score}} </b></li>
+                    <li>{{'RESULT.LETTER_ON_STAND' | translate}}<b class="result">{{this.lettersOnStand(this.players[2])}}</b></li>
+                    <li>{{'RESULT.NUMBER_TURNS_IN_GAME' | translate}}<b class="result">{{this.players[2].turn}}</b></li>
+                    <li *ngIf="this.infoClientService.game.gameMode === 'Ranked'">{{'RESULT.ELO' | translate}}<b class="result">{{this.players[2].elo}}{{this.newPlayersElo[2].elo - this.players[2].elo}} = {{this.newPlayersElo[2].elo}}</b></li>
+                </ul>
+            </div>
+            <div class="players-grid-col">
+                <ul>
+                    <h2 mat-dialog-title>{{'RESULT.PLAYER' | translate}}<a (click)="this.openProfilePage(this.players[3])" [ngDisableLink]="isLinkEnabled(this.players[3])" >
+                        {{this.players[3].name}}</a>
+                    </h2>
+                    <li>{{'RESULT.SCORE2' | translate}}<b class="result">{{this.players[3].score}} </b></li>
+                    <li>{{'RESULT.LETTER_ON_STAND' | translate}}<b class="result">{{this.lettersOnStand(this.players[3])}}</b></li>
+                    <li>{{'RESULT.NUMBER_TURNS_IN_GAME' | translate}}<b class="result">{{this.players[3].turn}}</b></li>
+                    <li *ngIf="this.infoClientService.game.gameMode === 'Ranked'">{{'RESULT.ELO' | translate}}<b class="result">{{this.players[3].elo}}{{this.newPlayersElo[3].elo - this.players[3].elo}} = {{this.newPlayersElo[3].elo}}</b></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+

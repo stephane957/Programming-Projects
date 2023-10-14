@@ -1,0 +1,156 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+#historyWrapper {
+    
+    width: 70%;
+    height: 65%;
+    position: absolute;
+    border-top-left-radius: 20px;
+    top: 50%;
+    left: 50%;
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+}
+
+.historyContainer{
+
+}
+
+#historyWrapper h1{
+    text-align: center;
+
+}
+
+.btnStyle{
+
+    left: 50%;
+    display: inline;
+    margin-top: 0px;
+    font-size: 18px;
+
+    cursor: pointer;
+    box-shadow: none;
+}
+
+.actionHistory{
+    padding: 1%;
+    
+    font-size: large;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    text-align: left;
+}
+
+.sidebar {
+    position: static bottom;
+    height: 90%;
+    border-radius: 15px;
+    overflow-x: auto;
+    overflow-y: scroll;
+    padding: 2%;
+}
+
+.title-box {
+    max-width: 100%;
+    
+    
+    margin-bottom: 10px;
+}
+
+.title {
+    font-size: x-large;
+    text-align: center;
+    justify-content: center;
+    margin-top: 2%;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    
+    margin-right: 50px;
+}
+
+.closeButton {
+    
+    
+    position: fixed;
+    top: 13%;
+    right: 20%;
+    margin-bottom: 0;
+}
+
+.closeButton:hover {
+    color: #ffff;
+    background-color: red;
+}
+
+.two-grid-row {
+    display: flex;
+}
+
+.two-grid-row:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+.two-grid-col {
+    flex: 50%;
+    margin-bottom: 10px;
+}
+
+#favouriteGames {
+    margin-bottom: 5px;
+    
+    font-size: large;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+
+    margin-top: 2%;
+
+    width: 60%;
+    height: 65%;
+    position: absolute;
+    border-top-left-radius: 20px;
+    top: 50%;
+    left: 50%;
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+}
+
+
+#favouriteGames ul {
+    list-style: none;
+}
+
+#favouriteGames li {
+    margin-top: 5px;
+}
+
+.players-grid-row {
+    display: flex;
+}
+
+.players-grid-row:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+.players-grid-col {
+    flex: 50%;
+    margin-bottom: 10px;
+    margin-right: 15px;
+}
+
+::-webkit-scrollbar {
+    width: 11px;
+    // Height of horizontal scroll bar
+    height: 10px;
+}
+::-webkit-scrollbar-track {
+    // background: wheat;
+}
+::-webkit-scrollbar-thumb {
+    // background: #0C483F;
+    border-radius: 10px;
+}

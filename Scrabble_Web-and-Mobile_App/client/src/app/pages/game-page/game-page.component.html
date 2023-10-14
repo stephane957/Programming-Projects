@@ -1,0 +1,18 @@
+<body (click)="onLeftClickGamePage()">
+    <div class="container">
+        <section class="play-area-container">
+            <app-board-stand class="play-area" tabindex="0"></app-board-stand>
+        </section>
+    </div>
+
+    <!-- The Modal to ask for password when entering a game -->
+    <div class="modal" [style.display]="isPlayerIncomming()">
+        <div class="modal-content" >
+            <h1>{{'GAME.THE_PLAYER' | translate}}{{infoClientService.incommingPlayer}}{{'GAME.TRYING_CONNECT' | translate}}</h1>
+            <div>
+                <button (click)="acceptPlayer(true)" class="btn">{{'GAME.YES' | translate}}</button>
+                <button (click)="acceptPlayer(false)" class="btn">{{'GAME.NO' | translate}}</button>
+            </div>
+        </div>
+    </div>
+</body>

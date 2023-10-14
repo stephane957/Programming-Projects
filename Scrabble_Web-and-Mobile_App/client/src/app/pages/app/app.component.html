@@ -1,0 +1,50 @@
+<body>
+    <ng-template style="height: 100%;width: 100%;" #other_content1>
+        <span 
+        *ngIf="infoClientService.soundDisabled" 
+        class="material-symbols-outlined"
+        (click)="infoClientService.soundDisabled = !infoClientService.soundDisabled"
+        >
+        volume_off
+        </span>
+        <span 
+        *ngIf="!infoClientService.soundDisabled" 
+        class="material-symbols-outlined"
+        (click)="infoClientService.soundDisabled = !infoClientService.soundDisabled"
+        >
+        volume_up
+        </span>
+        <router-outlet>
+            <h6 *ngIf="this.router.url !== '/game' && this.router.url !== '/home' && this.router.url !== '/game-mode-options'" class="MPButton" (click)="this.goingBack()"><mat-icon>arrow_back</mat-icon></h6>
+        </router-outlet>
+    </ng-template>
+    <div id="hideInGame" *ngIf="this.infoClientService.playerName !== undefined && this.infoClientService.playerName !== null && this.infoClientService.playerName !== 'DefaultPlayerName'; else other_content1" [ngClass]="{gridContainerInGame: this.router.url === '/game', gridContainer: this.router.url !== 'game'}">   
+        <span 
+        *ngIf="infoClientService.soundDisabled" 
+        class="material-symbols-outlined"
+        (click)="infoClientService.soundDisabled = !infoClientService.soundDisabled"
+        >
+        volume_off
+        </span>
+        <span 
+        *ngIf="!infoClientService.soundDisabled" 
+        class="material-symbols-outlined"
+        (click)="infoClientService.soundDisabled = !infoClientService.soundDisabled"
+        >
+        volume_up
+        </span>
+        <div class="grid-item" [ngClass]="{backgroundImage: this.router.url !== '/game', backgroundGame: this.router.url === '/game'}">
+            <router-outlet>
+                <h6 *ngIf="this.router.url !== '/game' && this.router.url !== '/home' && this.router.url !== '/game-mode-options'" class="MPButton" (click)="this.goingBack()"><mat-icon>arrow_back</mat-icon></h6>
+            </router-outlet>
+        </div>
+        <div class="grid-item" [ngClass]="{backgroundImage: this.router.url !== '/game', backgroundGame: this.router.url === '/game'}">
+            <div id="playersInfoNoLog" *ngIf="this.router.url === '/game'">
+                <app-info-panel></app-info-panel>
+            </div>
+            <div id="communicationBoxNoLog" *ngIf="this.router.url !== '/login' && this.router.url !== '/home'">
+                <app-communication-dashboard isInGame="true"></app-communication-dashboard>
+            </div>
+        </div>
+    </div>
+</body>

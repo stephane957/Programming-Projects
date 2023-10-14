@@ -1,0 +1,57 @@
+<div id="canvasContainer">
+    <div *ngIf="infoClientService.game.gameStarted">
+        <h1 id="playerB" class="playerName">{{playerNameDynamic('B')}}</h1>
+        <h1 id="playerT" class="playerName">{{playerNameDynamic('T')}}</h1>
+        <h1 id="playerL" class="playerName">{{playerNameDynamic('L')}}</h1>
+        <h1 id="playerR" class="playerName">{{playerNameDynamic('R')}}</h1>
+    </div>
+    <div id="containerBoard">
+        <!-- canvas for actual board and mooves -->
+        <canvas 
+        #canvasPlayArea
+        id="canvasPlayArea"
+        class="canvas"
+        [attr.width]="playAreaConvasSize.x" 
+        [attr.height]="playAreaConvasSize.y" 
+        (contextmenu)="$event.preventDefault()"
+        ></canvas>
+        <!-- canvas for drag and drop and drawing of every arrows 
+        border on hover placement -->
+        <canvas 
+        #tmpTileCanvas
+        id="tmpTileCanvas"
+        class="canvas"
+        [attr.width]="playAreaConvasSize.x" 
+        [attr.height]="playAreaConvasSize.y" 
+        (contextmenu)="$event.preventDefault()"
+        ></canvas>
+    </div>
+</div>
+
+
+
+<!-- the modal to choose the target player in case the player uses the card "EXCHANGE_STAND" -->
+<div class="modal" [style.display]="displayLetterChoiceModal">
+    <div class="modal-content" >
+        <span>Rentrez la lettre que vous voulez placer dans le champ suivant :</span>
+        <br>
+        <mat-form-field id="letterToChooseField">
+            <mat-label>Lettre</mat-label>
+            <input 
+                matInput 
+                placeholder="Ex. a" 
+                name ="letterChoice"
+                [(ngModel)]='letterChoice'
+                required
+                maxlength="1"
+            >
+        </mat-form-field>
+        <button
+            mat-raised-button
+            class="validateBtn"
+            (click)="continueProcessingDrop()"
+        >
+            Valider
+        </button>
+    </div>
+</div>
